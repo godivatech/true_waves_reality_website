@@ -250,10 +250,10 @@ export default function Home() {
               </div>
             </div>
             <div className="w-full md:w-1/2 h-full relative overflow-hidden">
-              <img 
-                src="/assets/images/process/Transparent Process.png" 
-                alt="Transparent Process" 
-                className="w-full h-full object-cover grayscale-[0.2] hover:grayscale-0 transition-all duration-1000 scale-105" 
+              <img
+                src="/assets/images/process/Transparent Process.png"
+                alt="Transparent Process"
+                className="w-full h-full object-cover grayscale-[0.2] hover:grayscale-0 transition-all duration-1000 scale-105"
               />
               <div className="absolute inset-0 bg-gradient-to-r from-[#0A1128] to-transparent md:block hidden" />
             </div>
@@ -270,10 +270,10 @@ export default function Home() {
               </div>
             </div>
             <div className="w-full md:w-1/2 h-full relative overflow-hidden">
-              <img 
-                src="/assets/images/process/DTCP Approved.png" 
-                alt="DTCP Approved & Verified" 
-                className="w-full h-full object-cover grayscale-[0.2] hover:grayscale-0 transition-all duration-1000 scale-105" 
+              <img
+                src="/assets/images/process/DTCP Approved.png"
+                alt="DTCP Approved & Verified"
+                className="w-full h-full object-cover grayscale-[0.2] hover:grayscale-0 transition-all duration-1000 scale-105"
               />
               <div className="absolute inset-0 bg-gradient-to-r from-[#0C1633] to-transparent md:block hidden" />
             </div>
@@ -290,10 +290,10 @@ export default function Home() {
               </div>
             </div>
             <div className="w-full md:w-1/2 h-full relative overflow-hidden">
-              <img 
-                src="/assets/images/process/Lifetime Relationship.png" 
-                alt="Lifetime Relationship" 
-                className="w-full h-full object-cover grayscale-[0.2] hover:grayscale-0 transition-all duration-1000 scale-105" 
+              <img
+                src="/assets/images/process/Lifetime Relationship.png"
+                alt="Lifetime Relationship"
+                className="w-full h-full object-cover grayscale-[0.2] hover:grayscale-0 transition-all duration-1000 scale-105"
               />
               <div className="absolute inset-0 bg-gradient-to-r from-[#0A1128] to-transparent md:block hidden" />
             </div>
