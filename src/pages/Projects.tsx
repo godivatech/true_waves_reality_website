@@ -1,7 +1,8 @@
 import { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
+import { X, ChevronLeft, ChevronRight, Maximize2 } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import WhatsAppBtn from "@/components/WhatsAppBtn";
@@ -11,7 +12,11 @@ import heroImg from "@/assets/images/hero-aerial.png";
 
 const IMAGEKIT_URL = import.meta.env.VITE_IMAGEKIT_URL || "https://ik.imagekit.io/15s95izzpx";
 
-const getImg = (path: string) => encodeURI(`${IMAGEKIT_URL}${path.startsWith('/') ? '' : '/'}${path}`);
+const getImg = (path: string, transform?: string) => {
+  const baseUrl = `${IMAGEKIT_URL}${path.startsWith('/') ? '' : '/'}${path}`;
+  const encodedUrl = encodeURI(baseUrl);
+  return transform ? `${encodedUrl}?tr=${transform}` : encodedUrl;
+};
 
 
 const projects = [
@@ -28,6 +33,18 @@ const projects = [
     featured: true,
     wide: true,
     desc: "A masterplanned gated community with full infrastructure, maze garden, and 40-ft grand entrance.",
+    gallery: [
+      getImg("True waves/True waves Reality/fairland/1.jpeg"),
+      getImg("True waves/True waves Reality/fairland/2.jpeg"),
+      getImg("True waves/True waves Reality/fairland/3.jpeg"),
+      getImg("True waves/True waves Reality/fairland/4.jpeg"),
+      getImg("True waves/True waves Reality/fairland/5.jpeg"),
+      getImg("True waves/True waves Reality/fairland/6.JPG"),
+      getImg("True waves/True waves Reality/fairland/7.JPG"),
+      getImg("True waves/True waves Reality/fairland/8.JPG"),
+      getImg("True waves/True waves Reality/fairland/9.JPG"),
+      getImg("True waves/True waves Reality/fairland/10.JPG"),
+    ]
   },
   {
     id: 2,
@@ -56,6 +73,15 @@ const projects = [
     featured: true,
     wide: false,
     desc: "Signature curved contemporary facade design with rooftop access and premium finishes throughout.",
+    gallery: [
+      getImg("True waves/True waves Reality/vishal virinchi/1.png"),
+      getImg("True waves/True waves Reality/vishal virinchi/2.png"),
+      getImg("True waves/True waves Reality/vishal virinchi/3.png"),
+      getImg("True waves/True waves Reality/vishal virinchi/4.png"),
+      getImg("True waves/True waves Reality/vishal virinchi/5.png"),
+      getImg("True waves/True waves Reality/vishal virinchi/6.png"),
+      getImg("True waves/True waves Reality/vishal virinchi/7.png"),
+    ]
   },
   {
     id: 4,
@@ -77,10 +103,13 @@ export default function Projects() {
   const containerRef = useRef<HTMLDivElement>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [activeFilter, setActiveFilter] = useState("All");
+  const [selectedGallery, setSelectedGallery] = useState<{title: string, images: string[]} | null>(null);
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
   const filteredProjects = activeFilter === "All" 
     ? projects 
     : projects.filter(p => p.category === activeFilter);
+
 
   useEffect(() => {
     ScrollTrigger.refresh();
@@ -213,6 +242,12 @@ export default function Projects() {
                   transition={{ duration: 0.5, ease: "easeOut" }}
                   key={p.id} 
                   className={`${colSpan} ${mt} group cursor-pointer reveal-card`}
+                  onClick={() => {
+                    if (p.gallery) {
+                      setSelectedGallery({ title: p.title, images: p.gallery });
+                      setCurrentImageIndex(0);
+                    }
+                  }}
                 >
                   <div className={`relative overflow-hidden ${aspect} mb-6`}>
                     {p.img.endsWith('.mp4') ? (
@@ -232,6 +267,13 @@ export default function Projects() {
                       />
                     )}
                     <div className="absolute inset-0 bg-[#0A1128]/5 group-hover:bg-transparent transition-colors duration-700" />
+                    
+                    {p.gallery && (
+                      <div className="absolute bottom-5 right-5 w-12 h-12 bg-white/10 backdrop-blur-xl border border-white/20 rounded-full flex items-center justify-center text-white opacity-0 group-hover:opacity-100 transition-all duration-500">
+                        <Maximize2 size={20} />
+                      </div>
+                    )}
+
                     <span className="absolute top-5 left-5 px-3 py-1 bg-white/10 backdrop-blur-md text-white text-xs tracking-widest uppercase border border-white/20">
                       {p.tag}
                     </span>
@@ -295,6 +337,78 @@ export default function Projects() {
       <MobileCta onContactClick={() => setIsModalOpen(true)} />
 
       <ConsultationModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
+
+      {/* Cinematic Gallery Modal */}
+      <AnimatePresence>
+        {selectedGallery && (
+          <motion.div 
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-[100] bg-black/95 flex flex-col items-center justify-center p-4 md:p-10 backdrop-blur-2xl"
+          >
+            {/* Gallery Header */}
+            <div className="absolute top-0 left-0 w-full p-6 md:p-10 flex justify-between items-center z-10">
+              <div>
+                <h4 className="text-white text-xl md:text-2xl font-medium tracking-tight">{selectedGallery.title}</h4>
+                <p className="text-white/40 text-xs tracking-[0.2em] uppercase mt-2">
+                  Image {currentImageIndex + 1} of {selectedGallery.images.length}
+                </p>
+              </div>
+              <button 
+                onClick={() => setSelectedGallery(null)}
+                className="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center text-white hover:bg-white/10 transition-colors"
+              >
+                <X size={24} />
+              </button>
+            </div>
+
+            {/* Main Image Container */}
+            <div className="relative w-full max-w-6xl aspect-[16/9] flex items-center justify-center">
+              <AnimatePresence mode="wait">
+                <motion.img
+                  key={currentImageIndex}
+                  initial={{ opacity: 0, scale: 0.95, y: 20 }}
+                  animate={{ opacity: 1, scale: 1, y: 0 }}
+                  exit={{ opacity: 0, scale: 1.05, y: -20 }}
+                  transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+                  src={`${selectedGallery.images[currentImageIndex]}?tr=w-1600`}
+                  className="w-full h-full object-contain"
+                />
+              </AnimatePresence>
+
+              {/* Navigation Arrows */}
+              <button 
+                onClick={() => setCurrentImageIndex((prev) => (prev === 0 ? selectedGallery.images.length - 1 : prev - 1))}
+                className="absolute left-4 md:-left-20 top-1/2 -translate-y-1/2 w-14 h-14 rounded-full border border-white/10 flex items-center justify-center text-white hover:bg-white/10 transition-all hover:scale-110"
+              >
+                <ChevronLeft size={32} />
+              </button>
+              <button 
+                onClick={() => setCurrentImageIndex((prev) => (prev === selectedGallery.images.length - 1 ? 0 : prev + 1))}
+                className="absolute right-4 md:-right-20 top-1/2 -translate-y-1/2 w-14 h-14 rounded-full border border-white/10 flex items-center justify-center text-white hover:bg-white/10 transition-all hover:scale-110"
+              >
+                <ChevronRight size={32} />
+              </button>
+            </div>
+
+            {/* Thumbnails Strip */}
+            <div className="absolute bottom-10 left-0 w-full flex justify-center gap-3 px-6 overflow-x-auto no-scrollbar">
+              {selectedGallery.images.map((img, idx) => (
+                <button
+                  key={idx}
+                  onClick={() => setCurrentImageIndex(idx)}
+                  className={`relative w-20 aspect-video overflow-hidden border-2 transition-all duration-300 flex-shrink-0 ${
+                    idx === currentImageIndex ? 'border-white scale-110' : 'border-transparent bg-white/10 backdrop-blur-sm opacity-40 hover:opacity-100'
+                  }`}
+                >
+                  <img src={`${img}?tr=w-200,h-150,fo-auto`} className="w-full h-full object-cover" />
+                </button>
+              ))}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }
