@@ -1,0 +1,488 @@
+# TRUE WAVES REALTY — NEXT-GEN CINEMATIC EXPERIENCE PROMPT (NON-GENERIC VERSION)
+
+You are NOT designing a traditional real estate website.
+
+You are creating a next-generation cinematic investment experience that feels like a premium technology product, luxury financial platform, and immersive digital brand experience.
+
+The final output must NOT resemble:
+- Generic real estate websites
+- Bootstrap layouts
+- Template-based landing pages
+- Standard SaaS websites
+- Common section stacking
+- Repetitive card grids
+- Predictable hero → cards → stats layouts
+
+The experience must feel custom-designed, experimental, cinematic, immersive, editorial, emotional, and premium.
+
+====================================================================
+BRAND
+====================================================================
+
+Brand Name:
+True Waves Realty
+
+Tagline:
+Invest • Grow • Prosper
+
+====================================================================
+MOST IMPORTANT RULE — BREAK TRADITIONAL WEBSITE STRUCTURE
+====================================================================
+
+DO NOT follow standard website flow.
+
+DO NOT create:
+- Simple centered hero sections
+- Repetitive vertical scrolling sections
+- Uniform card layouts
+- Equal-width grids everywhere
+- Generic pricing-table structures
+- Standard image-left text-right patterns
+- Repetitive box-based UI
+- Traditional corporate website composition
+
+INSTEAD:
+Create an immersive storytelling experience with dynamic layouts.
+
+Every section must feel completely different.
+
+The website should feel handcrafted like:
+- Apple product launch pages
+- Experimental Awwwards websites
+- Luxury fashion campaign sites
+- High-end architecture studio websites
+- Premium fintech experiences
+- Editorial digital magazines
+
+====================================================================
+NEW VISUAL DIRECTION (IMPORTANT)
+====================================================================
+
+The website should feel:
+
+- Dark luxury
+- Atmospheric
+- Cinematic
+- Editorial
+- Architectural
+- Spatial
+- Immersive
+- Elegant
+- Futuristic
+- Sophisticated
+
+The UI should rely MORE on:
+- Typography
+- Spacing
+- Motion
+- Composition
+- Lighting
+- Layering
+- Cinematic transitions
+
+And LESS on:
+- Colored boxes
+- Heavy backgrounds
+- Loud gradients
+- Too many cards
+- Too many borders
+
+====================================================================
+VERY IMPORTANT COLOR RULE
+====================================================================
+
+DO NOT overuse the primary brand color.
+
+The website should mostly use:
+- White space
+- Soft grayscale tones
+- Neutral luxury surfaces
+- Transparent layers
+- Soft shadows
+- Minimal accents
+
+Use the primary navy color VERY selectively only for:
+- Key moments
+- Premium sections
+- CTA emphasis
+- Hover interactions
+- Footer
+- Select cinematic transitions
+
+The website should NOT look blue-heavy.
+
+The experience must feel:
+- Elegant
+- Calm
+- Spacious
+- Architectural
+- Premium
+
+====================================================================
+PRIMARY COLOR SYSTEM
+====================================================================
+
+PRIMARY NAVY:
+#0A1128
+
+USE VERY SPARINGLY.
+
+ACCENT AZURE:
+#3ABEF9
+
+Use ONLY for:
+- Small interaction moments
+- Hover glows
+- Cursor effects
+- CTA highlights
+- Tiny visual accents
+
+DO NOT flood the UI with blue.
+
+MAIN WEBSITE SHOULD MOSTLY USE:
+- #FFFFFF
+- #F8FAFC
+- #F5F5F0
+- Soft transparent whites
+- Neutral glass layers
+- Soft grayscale depth
+
+SUPPORTING DARK:
+#1E293B
+
+Use for:
+- Cinematic depth sections
+- Layered dark overlays
+- Premium storytelling moments
+
+====================================================================
+TYPOGRAPHY SYSTEM (VERY IMPORTANT)
+====================================================================
+
+PRIMARY FONT:
+Poppins
+
+Typography must become the MAIN visual element.
+
+Use:
+- Huge cinematic headlines
+- Oversized typography blocks
+- Editorial spacing
+- Strong visual hierarchy
+- Minimal supporting text
+- Elegant readability
+
+Headings should feel:
+- Powerful
+- Confident
+- Architectural
+- Luxurious
+
+Use:
+- Massive whitespace
+- Tight heading tracking
+- Large section spacing
+- Minimal paragraph width
+
+The website should feel typography-driven.
+
+====================================================================
+DESIGN LANGUAGE
+====================================================================
+
+The design language should combine:
+
+- Luxury architecture websites
+- Modern editorial magazines
+- High-end fintech products
+- Apple cinematic storytelling
+- Scandinavian minimalism
+- Spatial design systems
+
+Visual personality:
+- Calm
+- Premium
+- Spacious
+- Intelligent
+- Sophisticated
+- Investor-focused
+
+====================================================================
+LAYOUT SYSTEM (CRITICAL)
+====================================================================
+
+DO NOT use repetitive stacked sections.
+
+Create:
+- Overlapping layouts
+- Floating content blocks
+- Split storytelling
+- Horizontal motion sections
+- Sticky storytelling areas
+- Bento editorial compositions
+- Layered image systems
+- Scroll-based transformations
+- Full-screen immersive sections
+- Asymmetrical spacing systems
+
+Every section must feel different.
+
+Avoid predictable layouts completely.
+
+====================================================================
+ADVANCED MODERN DESIGN PRINCIPLES
+====================================================================
+
+Follow the design practices used by:
+- Apple
+- Stripe
+- Linear
+- Framer
+- Airbnb
+- Rivian
+- Tesla
+- Notion
+
+Important rules:
+
+1. SIMPLICITY WINS
+- Remove unnecessary UI
+- Reduce visual noise
+- Prioritize clarity
+- Focus on whitespace
+
+2. MOTION MUST HAVE PURPOSE
+- Motion guides attention
+- Motion creates emotion
+- Motion improves storytelling
+- Avoid random animation
+
+3. PREMIUM SPACING
+- Large breathing room
+- Spacious layouts
+- Calm visual rhythm
+
+4. CONTENT-FIRST DESIGN
+- Typography drives sections
+- Messaging comes before decoration
+
+5. FEWER ELEMENTS, BETTER EXECUTION
+- Minimal UI
+- High polish
+- Strong interactions
+
+6. INTERACTIONS SHOULD FEEL PHYSICAL
+- Smooth hover easing
+- Magnetic movement
+- Responsive depth
+- Soft motion curves
+
+====================================================================
+GLOBAL EXPERIENCE
+====================================================================
+
+The website must feel alive while scrolling.
+
+Use:
+- GSAP ScrollTrigger
+- Cinematic transitions
+- Scroll-driven storytelling
+- Motion blur reveals
+- Floating gradients
+- Mouse-reactive lighting
+- Ambient movement
+- Depth-based parallax
+- Layered transparency
+- Sticky immersive scenes
+- Text masking transitions
+- Smooth page transitions
+
+Scrolling should feel:
+- Smooth
+- Premium
+- Cinematic
+- Intentional
+
+====================================================================
+TECH STACK (STRICT)
+====================================================================
+
+Use:
+- Next.js 15 App Router
+- TypeScript
+- Tailwind CSS
+- Framer Motion
+- GSAP + ScrollTrigger
+- Lenis Smooth Scrolling
+- Shadcn UI
+- Lucide React
+- React Hook Form
+- Zod Validation
+
+Architecture Requirements:
+- Fully responsive
+- SEO optimized
+- Accessibility optimized
+- Core Web Vitals optimized
+- Production ready
+- Enterprise quality structure
+
+====================================================================
+NAVBAR (NON-GENERIC)
+====================================================================
+
+Avoid traditional navbar styling.
+
+Create:
+- Floating transparent navbar
+- Minimal typography
+- Thin elegant dividers
+- Premium glass blur
+- Subtle motion
+- Cinematic transitions
+
+Navbar should feel:
+- Invisible
+- Lightweight
+- Elegant
+- Floating
+
+CTA button should feel premium and minimal.
+
+====================================================================
+HERO SECTION (IMPORTANT)
+====================================================================
+
+DO NOT create a normal hero section.
+
+Avoid:
+- Centered content
+- Generic background image
+- Basic CTA buttons
+- Standard split layouts
+
+Instead create:
+- Cinematic composition
+- Full-screen storytelling scene
+- Layered typography
+- Floating visual depth
+- Architectural spacing
+- Premium motion atmosphere
+
+Hero should feel like:
+A luxury investment campaign.
+
+Main Headline:
+“Turn Land into Wealth — Before Prices Rise”
+
+Subtext:
+“Exclusive DTCP-approved plots & high-growth investment opportunities across Chennai & Tamil Nadu.”
+
+The hero should feel immersive and emotional.
+
+====================================================================
+SECTION DESIGN RULES
+====================================================================
+
+Every section must introduce:
+- A new composition
+- A different interaction
+- A different motion rhythm
+- A different spacing system
+
+Avoid repeating:
+- Same card layouts
+- Same image placements
+- Same grid structures
+- Same motion patterns
+
+====================================================================
+MICRO INTERACTIONS
+====================================================================
+
+Add:
+- Magnetic buttons
+- Smooth hover easing
+- Cursor-follow lighting
+- Ripple interactions
+- Glow reveals
+- Motion blur transitions
+- Floating card movement
+- Depth scaling
+- Soft parallax
+
+Interactions should feel:
+- Premium
+- Physical
+- Cinematic
+- Responsive
+
+====================================================================
+MOBILE EXPERIENCE
+====================================================================
+
+Mobile experience must feel:
+- Native-app quality
+- Cinematic
+- Spacious
+- Premium
+
+DO NOT simply stack desktop sections.
+
+Create:
+- Unique mobile compositions
+- Premium mobile transitions
+- Thumb-friendly interactions
+- Sticky bottom CTA
+- Floating WhatsApp button
+- Smooth mobile storytelling
+
+====================================================================
+PERFORMANCE REQUIREMENTS
+====================================================================
+
+Must achieve excellent Lighthouse scores.
+
+Use:
+- GPU accelerated animations
+- Dynamic imports
+- Lazy loading
+- Optimized rendering
+- Reduced motion support
+- Efficient animation systems
+
+====================================================================
+SEO REQUIREMENTS
+====================================================================
+
+Implement:
+- Dynamic metadata
+- Structured schema
+- FAQ schema
+- Open Graph tags
+- Local SEO optimization
+- Sitemap.xml
+- Robots.txt
+
+====================================================================
+FINAL EXPERIENCE GOAL
+====================================================================
+
+The final website should feel like:
+
+“A cinematic luxury investment experience crafted by an elite global digital agency.”
+
+It must feel:
+- Architectural
+- Editorial
+- Minimal
+- Sophisticated
+- Emotional
+- Immersive
+- Expensive
+- Investor-focused
+- Awwwards-level
+- Technologically premium
+
+MOST IMPORTANT:
+It must NOT resemble a traditional real estate website in layout, composition, spacing, storytelling, or visual rhythm.

@@ -1,0 +1,26 @@
+uploads = []
+outputs = []
+
+[[generated]]
+id = "ETL5Yw4OS2pzr8wM_xGpa"
+uri = "file://artifacts/true-waves-realty/src/assets/images/hero-aerial.png"
+type = "image"
+title = "Cinematic aerial luxury land"
+
+[[generated]]
+id = "hjRnoaFHkaFHrsvS6UhmX"
+uri = "file://artifacts/true-waves-realty/src/assets/images/property-1.png"
+type = "image"
+title = "Minimalist architectural property"
+
+[[generated]]
+id = "_LIJnJox9M64kI0rPSJ-1"
+uri = "file://artifacts/true-waves-realty/src/assets/images/property-2.png"
+type = "image"
+title = "Expansive luxury plot"
+
+[[generated]]
+id = "Lnha9pjCQOA-ee3x1U8Sp"
+uri = "file://artifacts/true-waves-realty/src/assets/images/property-3.png"
+type = "image"
+title = "Commercial architecture rendering"
