@@ -25,10 +25,10 @@ export default function Footer() {
           <div className="md:col-span-2">
             <h4 className="text-white font-medium tracking-widest uppercase text-xs mb-8">Navigate</h4>
             <ul className="space-y-5 text-base">
+              <li><Link href="/about" className="hover:text-accent transition-colors cursor-pointer">About Us</Link></li>
               <li><Link href="/projects" className="hover:text-accent transition-colors cursor-pointer">Projects</Link></li>
               <li><Link href="/why-us" className="hover:text-accent transition-colors cursor-pointer">Why Us</Link></li>
               <li><Link href="/invest" className="hover:text-accent transition-colors cursor-pointer">Invest</Link></li>
-              <li><Link href="/about" className="hover:text-accent transition-colors cursor-pointer">About</Link></li>
             </ul>
           </div>
           <div className="md:col-span-2">

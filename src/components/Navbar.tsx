@@ -20,10 +20,10 @@ export default function Navbar() {
   }, [location]);
 
   const navLinks = [
+    { href: "/about", label: "About Us" },
     { href: "/projects", label: "Projects" },
     { href: "/why-us", label: "Why Us" },
     { href: "/invest", label: "Invest" },
-    { href: "/about", label: "About" },
   ];
 
   const transparent = isHome && !scrolled;

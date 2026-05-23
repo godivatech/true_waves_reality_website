@@ -103,7 +103,7 @@ export default function About() {
           animate={{ scale: 1 }}
           transition={{ duration: 2, ease: [0.16, 1, 0.3, 1] }}
         >
-          <img src={heroImg} alt="About" className="w-full h-full object-cover opacity-20" />
+          <img src={heroImg} alt="About Us" className="w-full h-full object-cover opacity-20" />
           <div className="absolute inset-0 bg-gradient-to-t from-[#0A1128] via-[#0A1128]/60 to-transparent" />
         </motion.div>
         <div className="relative z-10 container mx-auto px-6">
