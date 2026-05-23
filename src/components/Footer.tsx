@@ -2,10 +2,10 @@ import { Link } from "wouter";
 
 export default function Footer() {
   return (
-    <footer className="bg-[#0A1128] pt-24 pb-12 px-6 border-t border-white/5 text-white/50 text-sm font-light relative z-10">
+    <footer className="bg-[#0A1128] pt-16 pb-12 px-6 border-t border-white/5 text-white/50 text-sm font-light relative z-10">
       <div className="container mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-16 mb-24">
-          <div className="col-span-1 md:col-span-5">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-10 mb-12">
+          <div className="col-span-1 md:col-span-4">
             <Link href="/">
               <div className="flex flex-col items-start mb-8 cursor-pointer group">
                 <div className="mb-4 -mt-12">
@@ -31,12 +31,11 @@ export default function Footer() {
               <li><Link href="/invest" className="hover:text-accent transition-colors cursor-pointer">Invest</Link></li>
             </ul>
           </div>
-          <div className="md:col-span-2">
-            <h4 className="text-white font-medium tracking-widest uppercase text-xs mb-8">Legal</h4>
+          <div className="md:col-span-3">
+            <h4 className="text-white font-medium tracking-widest uppercase text-xs mb-8">Contact</h4>
             <ul className="space-y-5 text-base">
-              <li><a href="#" className="hover:text-accent transition-colors">Privacy Policy</a></li>
-              <li><a href="#" className="hover:text-accent transition-colors">Terms of Service</a></li>
-              <li><a href="#" className="hover:text-accent transition-colors">RERA Disclosures</a></li>
+              <li><a href="tel:+919876543210" className="hover:text-accent transition-colors">+91 98765 43210</a></li>
+              <li><a href="mailto:invest@truewaves.in" className="hover:text-accent transition-colors">invest@truewaves.in</a></li>
             </ul>
           </div>
           <div className="md:col-span-3">
