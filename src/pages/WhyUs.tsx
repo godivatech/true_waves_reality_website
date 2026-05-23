@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { motion } from "framer-motion";
@@ -6,7 +6,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import WhatsAppBtn from "@/components/WhatsAppBtn";
 import MobileCta from "@/components/MobileCta";
-import heroImg from "@/assets/images/hero-aerial.png";
+import ConsultationModal from "@/components/ConsultationModal";
 import prop1 from "@/assets/images/property-1.png";
 // Using public asset for the stats section
 const STATS_IMAGE = "/assets/images/other images/1.png";
@@ -55,7 +55,7 @@ const testimonials = [
 
 export default function WhyUs() {
   const containerRef = useRef<HTMLDivElement>(null);
-  const pinRef = useRef<HTMLDivElement>(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
     ScrollTrigger.refresh();
@@ -161,7 +161,7 @@ export default function WhyUs() {
       {/* Differentiators — editorial vertical list */}
       <section className="py-0 pb-40 px-6 bg-background">
         <div className="container mx-auto max-w-5xl">
-          {differentiators.map((d, i) => (
+          {differentiators.map((d) => (
             <div
               key={d.num}
               className="reveal-card border-t border-border/60 py-16 grid grid-cols-1 md:grid-cols-12 gap-8 group"
@@ -269,6 +269,7 @@ export default function WhyUs() {
       <Footer />
       <WhatsAppBtn />
       <MobileCta onContactClick={() => setIsModalOpen(true)} />
+      <ConsultationModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
     </div>
   );
 }

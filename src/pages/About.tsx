@@ -8,8 +8,6 @@ import WhatsAppBtn from "@/components/WhatsAppBtn";
 import MobileCta from "@/components/MobileCta";
 import ConsultationModal from "@/components/ConsultationModal";
 import heroImg from "@/assets/images/hero-aerial.png";
-import prop1 from "@/assets/images/property-1.png";
-import prop3 from "@/assets/images/property-3.png";
 
 const milestones = [
   { year: "2006", title: "Legacy Begins", desc: "Our leadership begins providing direct investor support across Tamil Nadu, laying the foundation for market intelligence." },
@@ -177,7 +175,7 @@ export default function About() {
           </h2>
           <div className="relative">
             <div className="absolute left-16 md:left-24 top-0 bottom-0 w-px bg-border/50" />
-            {milestones.map((m, i) => (
+            {milestones.map((m) => (
               <div key={m.year} className="reveal-card flex gap-10 md:gap-16 mb-16 relative group">
                 <div className="w-16 md:w-24 flex-shrink-0 text-right relative">
                   <span className="text-muted-foreground/40 font-medium text-sm tracking-widest block pt-1">{m.year}</span>
