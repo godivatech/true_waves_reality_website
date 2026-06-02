@@ -41,7 +41,7 @@ export default function Footer() {
           <div className="md:col-span-3">
             <h4 className="text-white font-medium tracking-widest uppercase text-xs mb-8">Chennai Office</h4>
             <address className="not-italic text-base leading-relaxed text-white/50">
-              17-13, Easwaran Koil Street,<br />
+              17/13, Easwaran Koil Street,<br />
               Vellai thottam, West Mambalam,<br />
               Chennai - 600033
             </address>

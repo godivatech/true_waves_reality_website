@@ -244,7 +244,7 @@ export default function About() {
               <div className="border-b border-white/10 pb-8">
                 <p className="text-white/40 text-xs tracking-widest uppercase mb-3">Office</p>
                 <p className="text-xl font-light text-white/70 leading-relaxed">
-                  17-13, Easwaran Koil Street,<br />
+                  17/13, Easwaran Koil Street,<br />
                   Vellai thottam, West Mambalam,<br />
                   Chennai - 600033
                 </p>
