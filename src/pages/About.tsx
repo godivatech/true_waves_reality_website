@@ -199,7 +199,7 @@ export default function About() {
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-24">
             {team.map((member, i) => (
-              <div key={member.name} className={`reveal-card group ${i === 1 ? "md:mt-12" : ""}`}>
+              <div key={member.name} className="reveal-card group">
                 <div className="relative overflow-hidden aspect-[3/4] mb-8">
                   <img
                     src={member.img}
