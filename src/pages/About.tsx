@@ -194,6 +194,92 @@ export default function About() {
         </div>
       </section>
 
+      {/* Comparison Section */}
+      <section className="py-32 px-6 bg-background border-t border-border/40">
+        <div className="container mx-auto max-w-6xl">
+          <span className="text-accent text-sm tracking-[0.3em] uppercase font-medium block mb-6 reveal-text">
+            The True Waves Difference
+          </span>
+          <h2 className="text-4xl md:text-6xl font-semibold tracking-tighter mb-20 reveal-text text-foreground">
+            We solve every problem<br className="hidden md:block" /> you've faced in real estate
+          </h2>
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+            {/* The Old Way */}
+            <div className="space-y-8 reveal-card">
+              <div className="flex items-center gap-3 text-2xl font-semibold text-red-600 mb-6">
+                <span>❌</span>
+                <h3>The old way</h3>
+              </div>
+
+              <div className="space-y-4">
+                {[
+                  {
+                    title: "Confusing property deals",
+                    desc: "complicated paperwork, unclear terms, hidden clauses you find out about too late."
+                  },
+                  {
+                    title: "Unverified documents",
+                    desc: "titles you can't trust, legal disputes that emerge after purchase."
+                  },
+                  {
+                    title: "No guidance after purchase",
+                    desc: "agents disappear the moment the deal is closed."
+                  },
+                  {
+                    title: "Low returns due to wrong location",
+                    desc: "investing in areas with no growth potential or poor connectivity."
+                  }
+                ].map((item, idx) => (
+                  <div key={idx} className="flex gap-4 p-5 rounded-sm bg-[#FFF5F5] border border-red-100/30">
+                    <span className="flex-shrink-0 w-6 h-6 rounded-full bg-red-100 text-red-700 flex items-center justify-center text-xs font-bold mt-0.5">✕</span>
+                    <p className="text-base text-foreground/80 font-light leading-relaxed">
+                      <strong className="font-semibold text-foreground">{item.title}</strong> — {item.desc}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* The True Waves Way */}
+            <div className="space-y-8 reveal-card">
+              <div className="flex items-center gap-3 text-2xl font-semibold text-emerald-700 mb-6">
+                <span>✅</span>
+                <h3>The True Waves way</h3>
+              </div>
+
+              <div className="space-y-4">
+                {[
+                  {
+                    title: "100% transparent process",
+                    desc: "we walk you through every document, every clause, every step of registration."
+                  },
+                  {
+                    title: "DTCP-approved & legally verified",
+                    desc: "every project goes through rigorous legal checks before we present it to you."
+                  },
+                  {
+                    title: "Lifetime relationship",
+                    desc: "buy, grow, and exit with our guidance. We're with you for the full investment journey."
+                  },
+                  {
+                    title: "Location intelligence",
+                    desc: "we identify high-growth corridors early, so your investment appreciates ahead of the crowd."
+                  }
+                ].map((item, idx) => (
+                  <div key={idx} className="flex gap-4 p-5 rounded-sm bg-[#F3FAF5] border border-emerald-100/20">
+                    <span className="flex-shrink-0 w-6 h-6 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center text-xs font-bold mt-0.5">✓</span>
+                    <p className="text-base text-foreground/80 font-light leading-relaxed">
+                      <strong className="font-semibold text-foreground">{item.title}</strong> — {item.desc}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Timeline */}
       <section className="py-32 px-6 bg-background">
         <div className="container mx-auto max-w-5xl">
