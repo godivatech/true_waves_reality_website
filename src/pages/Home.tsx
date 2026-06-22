@@ -347,7 +347,7 @@ export default function Home() {
             {/* Project 3 */}
             <div className="group cursor-pointer reveal-text">
               <div className="relative overflow-hidden aspect-[4/3] mb-6">
-                <img src={getImg("True waves/True waves Reality/vishal virinchi/1.png")} alt="Commercial Plot" className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105" />
+                <img src="/assets/images/other images/vishal virinchi main.png" alt="Commercial Plot" className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105" />
                 <div className="absolute inset-0 bg-primary/5 group-hover:bg-transparent transition-colors duration-500" />
               </div>
               <div className="flex flex-col gap-2">
