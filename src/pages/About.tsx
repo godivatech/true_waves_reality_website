@@ -131,14 +131,32 @@ export default function About() {
       </section>
 
       {/* Manifesto */}
-      <section className="py-32 px-6 bg-background">
+      <section className="py-32 px-6 bg-background overflow-hidden relative">
+        <div className="absolute inset-0 opacity-[0.02] pointer-events-none bg-[radial-gradient(#0A1128_1px,transparent_1px)] [background-size:24px_24px]"></div>
+        
         <div className="container mx-auto max-w-5xl">
-          <p className="text-3xl md:text-5xl font-light leading-tight tracking-tight reveal-text text-foreground/90">
-            We started True Waves because we watched good people make bad land investments —
-            not from greed, but from a lack of{" "}
-            <span className="text-foreground font-medium">proper guidance</span>
-          </p>
-          <div className="mt-24 grid grid-cols-1 md:grid-cols-2 gap-20">
+          {/* Main Statement */}
+          <div className="max-w-4xl">
+            <p className="text-3xl md:text-5xl font-light leading-tight tracking-tight reveal-text text-foreground/90">
+              We started True Waves because we watched good people make bad land investments —
+              not from greed, but from a lack of{" "}
+              <span className="text-foreground font-medium">proper guidance</span>
+            </p>
+          </div>
+
+          {/* Large Cinematic Image Showcase */}
+          <div className="mt-16 reveal-card">
+            <div className="relative overflow-hidden aspect-[16/10] md:aspect-[16/9] rounded-sm border border-border/40 shadow-sm">
+              <img 
+                src="/assets/images/other images/about-manifesto.png" 
+                alt="Boardroom advisory session" 
+                className="w-full h-full object-cover" 
+              />
+            </div>
+          </div>
+
+          {/* Detail Paragraphs */}
+          <div className="mt-16 grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-20">
             <p className="text-lg text-foreground/80 font-light leading-relaxed reveal-text">
               Tamil Nadu is one of India's most dynamic real estate markets. Infrastructure investment is accelerating: metro extensions, highway corridors, SEZs, IT parks. The opportunity is real. But so are the risks for those who buy without the right partner.
             </p>
