@@ -61,6 +61,9 @@ const projects = [
     featured: false,
     wide: false,
     desc: "RCC framed structure with full-body vitrified tile flooring and premium teak wood main door.",
+    gallery: [
+      getImg("True waves/True waves Reality/alagar homes/1.mp4"),
+    ]
   },
   {
     id: 3,
@@ -372,46 +375,75 @@ export default function Projects() {
             {/* Main Image Container */}
             <div className="relative w-full max-w-6xl aspect-[16/9] flex items-center justify-center">
               <AnimatePresence mode="wait">
-                <motion.img
-                  key={currentImageIndex}
-                  initial={{ opacity: 0, scale: 0.95, y: 20 }}
-                  animate={{ opacity: 1, scale: 1, y: 0 }}
-                  exit={{ opacity: 0, scale: 1.05, y: -20 }}
-                  transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-                  src={`${selectedGallery.images[currentImageIndex]}?tr=w-1600`}
-                  className="w-full h-full object-contain"
-                />
+                {selectedGallery.images[currentImageIndex].endsWith('.mp4') ? (
+                  <motion.video
+                    key={currentImageIndex}
+                    initial={{ opacity: 0, scale: 0.95, y: 20 }}
+                    animate={{ opacity: 1, scale: 1, y: 0 }}
+                    exit={{ opacity: 0, scale: 1.05, y: -20 }}
+                    transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+                    src={selectedGallery.images[currentImageIndex]}
+                    autoPlay
+                    controls
+                    muted
+                    loop
+                    playsInline
+                    className="w-full h-full object-contain"
+                  />
+                ) : (
+                  <motion.img
+                    key={currentImageIndex}
+                    initial={{ opacity: 0, scale: 0.95, y: 20 }}
+                    animate={{ opacity: 1, scale: 1, y: 0 }}
+                    exit={{ opacity: 0, scale: 1.05, y: -20 }}
+                    transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+                    src={selectedGallery.images[currentImageIndex].startsWith('/') 
+                      ? selectedGallery.images[currentImageIndex] 
+                      : `${selectedGallery.images[currentImageIndex]}?tr=w-1600`}
+                    className="w-full h-full object-contain"
+                  />
+                )}
               </AnimatePresence>
 
               {/* Navigation Arrows */}
-              <button 
-                onClick={() => setCurrentImageIndex((prev) => (prev === 0 ? selectedGallery.images.length - 1 : prev - 1))}
-                className="absolute left-4 md:-left-20 top-1/2 -translate-y-1/2 w-14 h-14 rounded-full border border-white/10 flex items-center justify-center text-white hover:bg-white/10 transition-all hover:scale-110"
-              >
-                <ChevronLeft size={32} />
-              </button>
-              <button 
-                onClick={() => setCurrentImageIndex((prev) => (prev === selectedGallery.images.length - 1 ? 0 : prev + 1))}
-                className="absolute right-4 md:-right-20 top-1/2 -translate-y-1/2 w-14 h-14 rounded-full border border-white/10 flex items-center justify-center text-white hover:bg-white/10 transition-all hover:scale-110"
-              >
-                <ChevronRight size={32} />
-              </button>
+              {selectedGallery.images.length > 1 && (
+                <>
+                  <button 
+                    onClick={() => setCurrentImageIndex((prev) => (prev === 0 ? selectedGallery.images.length - 1 : prev - 1))}
+                    className="absolute left-4 md:-left-20 top-1/2 -translate-y-1/2 w-14 h-14 rounded-full border border-white/10 flex items-center justify-center text-white hover:bg-white/10 transition-all hover:scale-110"
+                  >
+                    <ChevronLeft size={32} />
+                  </button>
+                  <button 
+                    onClick={() => setCurrentImageIndex((prev) => (prev === selectedGallery.images.length - 1 ? 0 : prev + 1))}
+                    className="absolute right-4 md:-right-20 top-1/2 -translate-y-1/2 w-14 h-14 rounded-full border border-white/10 flex items-center justify-center text-white hover:bg-white/10 transition-all hover:scale-110"
+                  >
+                    <ChevronRight size={32} />
+                  </button>
+                </>
+              )}
             </div>
 
             {/* Thumbnails Strip */}
-            <div className="absolute bottom-10 left-0 w-full flex justify-center gap-3 px-6 overflow-x-auto no-scrollbar">
-              {selectedGallery.images.map((img, idx) => (
-                <button
-                  key={idx}
-                  onClick={() => setCurrentImageIndex(idx)}
-                  className={`relative w-20 aspect-video overflow-hidden border-2 transition-all duration-300 flex-shrink-0 ${
-                    idx === currentImageIndex ? 'border-white scale-110' : 'border-transparent bg-white/10 backdrop-blur-sm opacity-40 hover:opacity-100'
-                  }`}
-                >
-                  <img src={`${img}?tr=w-200,h-150,fo-auto`} className="w-full h-full object-cover" />
-                </button>
-              ))}
-            </div>
+            {selectedGallery.images.length > 1 && (
+              <div className="absolute bottom-10 left-0 w-full flex justify-center gap-3 px-6 overflow-x-auto no-scrollbar">
+                {selectedGallery.images.map((img, idx) => (
+                  <button
+                    key={idx}
+                    onClick={() => setCurrentImageIndex(idx)}
+                    className={`relative w-20 aspect-video overflow-hidden border-2 transition-all duration-300 flex-shrink-0 ${
+                      idx === currentImageIndex ? 'border-white scale-110' : 'border-transparent bg-white/10 backdrop-blur-sm opacity-40 hover:opacity-100'
+                    }`}
+                  >
+                    {img.endsWith('.mp4') ? (
+                      <video src={img} muted className="w-full h-full object-cover" />
+                    ) : (
+                      <img src={img.startsWith('/') ? img : `${img}?tr=w-200,h-150,fo-auto`} className="w-full h-full object-cover" />
+                    )}
+                  </button>
+                ))}
+              </div>
+            )}
           </motion.div>
         )}
       </AnimatePresence>
