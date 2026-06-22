@@ -57,7 +57,7 @@ const projects = [
     price: "Premium Living",
     tag: "BB Kulam",
     category: "Residential",
-    img: getImg("True waves/True waves Reality/alagar homes/1.mp4"),
+    img: "/assets/images/other images/Alagar Homes.png",
     featured: false,
     wide: false,
     desc: "RCC framed structure with full-body vitrified tile flooring and premium teak wood main door.",

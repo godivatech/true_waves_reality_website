@@ -332,7 +332,7 @@ export default function Home() {
             {/* Project 2 */}
             <div className="group cursor-pointer reveal-text">
               <div className="relative overflow-hidden aspect-[4/3] mb-6">
-                <video src={getImg("True waves/True waves Reality/alagar homes/1.mp4")} autoPlay loop muted playsInline className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105" />
+                <img src="/assets/images/other images/Alagar Homes.png" alt="Alagar Homes" className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105" />
                 <div className="absolute inset-0 bg-primary/5 group-hover:bg-transparent transition-colors duration-500" />
               </div>
               <div className="flex flex-col gap-2">
