@@ -290,7 +290,7 @@ export default function About() {
             <div className="absolute left-16 md:left-24 top-0 bottom-0 w-px bg-border/50" />
             {milestones.map((m) => (
               <div key={m.year} className="reveal-card flex gap-10 md:gap-16 mb-16 relative group">
-                <div className="w-16 md:w-24 flex-shrink-0 text-right relative">
+                <div className="w-16 md:w-24 flex-shrink-0 text-right relative pr-5 md:pr-8">
                   <span className="text-muted-foreground/40 font-medium text-sm tracking-widest block pt-1">{m.year}</span>
                   <div className="absolute right-0 top-2 w-2.5 h-2.5 rounded-full bg-border group-hover:bg-accent transition-colors duration-500 translate-x-[calc(50%+0.5px)]" />
                 </div>
