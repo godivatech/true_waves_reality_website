@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { motion } from "framer-motion";
+import { Scale, ShieldCheck, TrendingUp, HeartHandshake } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import WhatsAppBtn from "@/components/WhatsAppBtn";
@@ -21,18 +22,22 @@ const values = [
   {
     title: "Transparency",
     body: "We disclose our fee structure upfront. You will never encounter a hidden charge, a misleading commission, or an inflated quote from us.",
+    icon: Scale,
   },
   {
     title: "Legal Integrity",
     body: "Not one plot has left our portfolio without complete documentation. This is not a differentiator — it is the baseline.",
+    icon: ShieldCheck,
   },
   {
     title: "Long-Term Thinking",
     body: "We study infrastructure pipelines and urban expansion over 7-year horizons. Our recommendations are built for your future self, not this quarter.",
+    icon: TrendingUp,
   },
   {
     title: "Client First",
     body: "Our advisors are measured on client satisfaction and return on investment — never on units sold or revenue targets.",
+    icon: HeartHandshake,
   },
 ];
 
@@ -151,18 +156,22 @@ export default function About() {
             What We <span className="text-muted-foreground/30 font-light">Stand For</span>
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-0 border border-border/40">
-            {values.map((v, i) => (
-              <div
-                key={v.title}
-                className={`reveal-card p-12 md:p-16 group hover:bg-white transition-colors duration-500 ${i % 2 === 0 ? "md:border-r border-border/40" : ""
-                  } ${i < 2 ? "border-b border-border/40" : ""}`}
-              >
-                <h3 className="text-2xl md:text-3xl font-medium tracking-tight mb-6 group-hover:text-accent transition-colors duration-500">
-                  {v.title}
-                </h3>
-                <p className="text-foreground/80 font-light leading-relaxed text-lg">{v.body}</p>
-              </div>
-            ))}
+            {values.map((v, i) => {
+              const Icon = v.icon;
+              return (
+                <div
+                  key={v.title}
+                  className={`reveal-card p-12 md:p-16 group hover:bg-white transition-colors duration-500 ${i % 2 === 0 ? "md:border-r border-border/40" : ""
+                    } ${i < 2 ? "border-b border-border/40" : ""}`}
+                >
+                  <Icon className="w-10 h-10 text-accent mb-6 stroke-[1.5]" />
+                  <h3 className="text-2xl md:text-3xl font-medium tracking-tight mb-6 group-hover:text-accent transition-colors duration-500">
+                    {v.title}
+                  </h3>
+                  <p className="text-foreground/80 font-light leading-relaxed text-lg">{v.body}</p>
+                </div>
+              );
+            })}
           </div>
         </div>
       </section>
