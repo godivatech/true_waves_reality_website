@@ -21,7 +21,16 @@ export default function Navbar() {
 
   const navLinks = [
     { href: "/about", label: "About Us" },
-    { href: "/projects", label: "Projects" },
+    {
+      href: "/projects",
+      label: "Projects",
+      dropdownItems: [
+        { href: "/projects?filter=All", label: "All Projects" },
+        { href: "/projects?filter=Residential", label: "Residential" },
+        { href: "/projects?filter=Commercial", label: "Commercial" },
+        { href: "/projects?filter=Premium Villas", label: "Premium Villas" },
+      ]
+    },
     { href: "/why-us", label: "Why Us" },
     { href: "/invest", label: "Invest" },
   ];
@@ -52,19 +61,69 @@ export default function Navbar() {
           </Link>
 
           <div className="hidden md:flex items-center gap-10">
-            {navLinks.map(({ href, label }) => (
-              <Link
-                key={href}
-                href={href}
-                className={`text-sm font-medium tracking-wide transition-colors duration-300 ${location === href
-                  ? "text-accent"
-                  : "text-white/80 hover:text-white"
-                  }`}
-                data-testid={`link-nav-${label.toLowerCase().replace(" ", "-")}`}
-              >
-                {label}
-              </Link>
-            ))}
+            {navLinks.map((link) => {
+              if (link.dropdownItems) {
+                return (
+                  <div key={link.href} className="relative group py-2">
+                    <Link
+                      href={link.href}
+                      className={`text-sm font-medium tracking-wide transition-colors duration-300 flex items-center gap-1.5 ${location.startsWith(link.href)
+                        ? "text-accent"
+                        : "text-white/80 hover:text-white"
+                        }`}
+                      data-testid={`link-nav-${link.label.toLowerCase().replace(" ", "-")}`}
+                    >
+                      {link.label}
+                      <svg
+                        className="w-3.5 h-3.5 transition-transform duration-300 group-hover:rotate-180 opacity-70"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                      >
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                      </svg>
+                    </Link>
+
+                    {/* Dropdown Menu */}
+                    <div className="absolute top-full left-1/2 -translate-x-1/2 pt-3 w-56 opacity-0 translate-y-2 pointer-events-none group-hover:opacity-100 group-hover:translate-y-0 group-hover:pointer-events-auto transition-all duration-300 ease-out z-50">
+                      <div className="bg-[#0A1128]/95 backdrop-blur-lg border border-white/10 rounded-sm p-3 shadow-2xl flex flex-col gap-1">
+                        {link.dropdownItems.map((item) => (
+                          <Link
+                            key={item.href}
+                            href={item.href}
+                            className="text-[11px] font-medium tracking-widest uppercase text-white/70 hover:text-accent hover:bg-white/5 px-4 py-3 rounded-sm transition-all duration-300 flex items-center justify-between group/item"
+                          >
+                            <span>{item.label}</span>
+                            <svg
+                              className="w-3 h-3 opacity-0 -translate-x-2 group-hover/item:opacity-100 group-hover/item:translate-x-0 transition-all duration-300"
+                              fill="none"
+                              viewBox="0 0 24 24"
+                              stroke="currentColor"
+                            >
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 5l7 7-7 7" />
+                            </svg>
+                          </Link>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                );
+              }
+
+              return (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className={`text-sm font-medium tracking-wide transition-colors duration-300 ${location === link.href
+                    ? "text-accent"
+                    : "text-white/80 hover:text-white"
+                    }`}
+                  data-testid={`link-nav-${link.label.toLowerCase().replace(" ", "-")}`}
+                >
+                  {link.label}
+                </Link>
+              );
+            })}
           </div>
 
           <button
@@ -94,19 +153,49 @@ export default function Navbar() {
 
       {/* Mobile Menu */}
       <div
-        className={`fixed inset-0 z-40 bg-[#0A1128] flex flex-col justify-center items-center gap-10 transition-all duration-500 ${menuOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
+        className={`fixed inset-0 z-40 bg-[#0A1128] flex flex-col justify-center items-center gap-6 overflow-y-auto py-24 transition-all duration-500 ${menuOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
           }`}
       >
-        {navLinks.map(({ href, label }) => (
-          <Link
-            key={href}
-            href={href}
-            className="text-white text-5xl font-light tracking-tight hover:text-accent transition-colors"
-            data-testid={`link-mobile-nav-${label.toLowerCase().replace(" ", "-")}`}
-          >
-            {label}
-          </Link>
-        ))}
+        {navLinks.map((link) => {
+          if (link.dropdownItems) {
+            return (
+              <div key={link.href} className="flex flex-col items-center gap-3">
+                <Link
+                  href={link.href}
+                  onClick={() => setMenuOpen(false)}
+                  className="text-white text-4xl font-light tracking-tight hover:text-accent transition-colors"
+                  data-testid={`link-mobile-nav-${link.label.toLowerCase().replace(" ", "-")}`}
+                >
+                  {link.label}
+                </Link>
+                <div className="flex flex-col items-center gap-2.5">
+                  {link.dropdownItems.map((item) => (
+                    <Link
+                      key={item.href}
+                      href={item.href}
+                      onClick={() => setMenuOpen(false)}
+                      className="text-white/50 hover:text-accent text-sm tracking-widest uppercase transition-colors"
+                    >
+                      {item.label}
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            );
+          }
+
+          return (
+            <Link
+              key={link.href}
+              href={link.href}
+              onClick={() => setMenuOpen(false)}
+              className="text-white text-4xl font-light tracking-tight hover:text-accent transition-colors"
+              data-testid={`link-mobile-nav-${link.label.toLowerCase().replace(" ", "-")}`}
+            >
+              {link.label}
+            </Link>
+          );
+        })}
         <button
           onClick={() => {
             setMenuOpen(false);

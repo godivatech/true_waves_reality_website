@@ -10,6 +10,8 @@ import MobileCta from "@/components/MobileCta";
 import ConsultationModal from "@/components/ConsultationModal";
 import heroImg from "@/assets/images/hero-aerial.png";
 
+import { useLocation } from "wouter";
+
 const IMAGEKIT_URL = import.meta.env.VITE_IMAGEKIT_URL || "https://ik.imagekit.io/15s95izzpx";
 
 const getImg = (path: string, transform?: string) => {
@@ -105,6 +107,20 @@ export default function Projects() {
   const [activeFilter, setActiveFilter] = useState("All");
   const [selectedGallery, setSelectedGallery] = useState<{title: string, images: string[]} | null>(null);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [location] = useLocation();
+
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const filterParam = params.get("filter");
+    if (filterParam) {
+      const decodedFilter = decodeURIComponent(filterParam);
+      if (["All", "Residential", "Commercial", "Agricultural", "Premium Villas"].includes(decodedFilter)) {
+        setActiveFilter(decodedFilter);
+      }
+    } else {
+      setActiveFilter("All");
+    }
+  }, [location]);
 
   const filteredProjects = activeFilter === "All" 
     ? projects 
