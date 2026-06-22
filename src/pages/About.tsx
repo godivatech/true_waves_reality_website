@@ -124,8 +124,8 @@ export default function About() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1.2, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
           >
-            Built on<br />
-            <span className="font-light text-white/40">trust, since 2012</span>
+            Built on trust,<br />
+            <span className="font-light text-white/40">since 2012</span>
           </motion.h1>
         </div>
       </section>
