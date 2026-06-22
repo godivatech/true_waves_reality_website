@@ -218,21 +218,11 @@ export default function Projects() {
         </div>
       </section>
 
-      {/* Asymmetric Grid */}
+      {/* Grid */}
       <section className="py-12 px-6 bg-background">
         <div className="container mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16">
-            {filteredProjects.map((p, i) => {
-              const colSpan =
-                i === 0 ? "lg:col-span-8" :
-                  i === 1 ? "lg:col-span-4" :
-                    i === 2 ? "lg:col-span-5" :
-                      i === 3 ? "lg:col-span-7" :
-                        i === 4 ? "lg:col-span-4" :
-                          "lg:col-span-8";
-              const mt = i === 1 ? "lg:mt-24" : i === 3 ? "lg:mt-16" : i === 5 ? "lg:-mt-16" : "";
-              const aspect = i === 0 || i === 3 ? "aspect-[4/3]" : i === 1 || i === 4 ? "aspect-[3/4]" : "aspect-[3/2]";
-
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-12">
+            {filteredProjects.map((p) => {
               return (
                 <motion.div 
                   layout
@@ -241,7 +231,7 @@ export default function Projects() {
                   exit={{ opacity: 0, scale: 0.95 }}
                   transition={{ duration: 0.5, ease: "easeOut" }}
                   key={p.id} 
-                  className={`${colSpan} ${mt} group cursor-pointer reveal-card`}
+                  className="group cursor-pointer reveal-card"
                   onClick={() => {
                     if (p.gallery) {
                       setSelectedGallery({ title: p.title, images: p.gallery });
@@ -249,7 +239,7 @@ export default function Projects() {
                     }
                   }}
                 >
-                  <div className={`relative overflow-hidden ${aspect} mb-6`}>
+                  <div className="relative overflow-hidden aspect-[4/3] mb-6">
                     {p.img.endsWith('.mp4') ? (
                       <video
                         src={p.img}

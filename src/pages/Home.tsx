@@ -313,49 +313,49 @@ export default function Home() {
             </Link>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-24">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-12">
             {/* Project 1 */}
-            <div className="lg:col-span-7 group cursor-pointer reveal-text">
-              <div className="relative overflow-hidden aspect-[4/3] mb-8">
+            <div className="group cursor-pointer reveal-text">
+              <div className="relative overflow-hidden aspect-[4/3] mb-6">
                 <img src={getImg("True waves/True waves Reality/fairland/1.jpeg")} alt="Residential Plot" className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105" />
                 <div className="absolute inset-0 bg-primary/5 group-hover:bg-transparent transition-colors duration-500" />
               </div>
-              <div className="flex justify-between items-start">
-                <div>
-                  <p className="text-accent text-sm tracking-widest uppercase mb-3 font-medium">Madurai</p>
-                  <h3 className="text-4xl font-medium tracking-tight">Fairland Township</h3>
+              <div className="flex flex-col gap-2">
+                <p className="text-accent text-sm tracking-widest uppercase mb-1 font-medium">Madurai</p>
+                <div className="flex justify-between items-baseline gap-4">
+                  <h3 className="text-2xl md:text-3xl font-medium tracking-tight group-hover:text-accent transition-colors duration-300">Fairland Township</h3>
+                  <p className="text-foreground/70 font-light text-sm whitespace-nowrap">Integrated Township</p>
                 </div>
-                <p className="text-foreground/70 font-light text-lg">Integrated Township</p>
               </div>
             </div>
 
             {/* Project 2 */}
-            <div className="lg:col-span-5 lg:mt-40 group cursor-pointer reveal-text">
-              <div className="relative overflow-hidden aspect-[3/4] mb-8">
+            <div className="group cursor-pointer reveal-text">
+              <div className="relative overflow-hidden aspect-[4/3] mb-6">
                 <video src={getImg("True waves/True waves Reality/alagar homes/1.mp4")} autoPlay loop muted playsInline className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105" />
                 <div className="absolute inset-0 bg-primary/5 group-hover:bg-transparent transition-colors duration-500" />
               </div>
-              <div className="flex justify-between items-start">
-                <div>
-                  <p className="text-accent text-sm tracking-widest uppercase mb-3 font-medium">Madurai</p>
-                  <h3 className="text-3xl font-medium tracking-tight">Alagar Homes</h3>
+              <div className="flex flex-col gap-2">
+                <p className="text-accent text-sm tracking-widest uppercase mb-1 font-medium">Madurai</p>
+                <div className="flex justify-between items-baseline gap-4">
+                  <h3 className="text-2xl md:text-3xl font-medium tracking-tight group-hover:text-accent transition-colors duration-300">Alagar Homes</h3>
+                  <p className="text-foreground/70 font-light text-sm whitespace-nowrap">Residential Apartments</p>
                 </div>
-                <p className="text-foreground/70 font-light text-lg">Residential Apartments</p>
               </div>
             </div>
 
             {/* Project 3 */}
-            <div className="lg:col-span-12 lg:mt-24 group cursor-pointer reveal-text">
-              <div className="relative overflow-hidden aspect-[21/9] mb-8">
+            <div className="group cursor-pointer reveal-text">
+              <div className="relative overflow-hidden aspect-[4/3] mb-6">
                 <img src={getImg("True waves/True waves Reality/vishal virinchi/1.png")} alt="Commercial Plot" className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105" />
                 <div className="absolute inset-0 bg-primary/5 group-hover:bg-transparent transition-colors duration-500" />
               </div>
-              <div className="flex justify-between items-start">
-                <div>
-                  <p className="text-accent text-sm tracking-widest uppercase mb-3 font-medium">Madurai</p>
-                  <h3 className="text-4xl font-medium tracking-tight">Vishal's Virinchi</h3>
+              <div className="flex flex-col gap-2">
+                <p className="text-accent text-sm tracking-widest uppercase mb-1 font-medium">Madurai</p>
+                <div className="flex justify-between items-baseline gap-4">
+                  <h3 className="text-2xl md:text-3xl font-medium tracking-tight group-hover:text-accent transition-colors duration-300">Vishal's Virinchi</h3>
+                  <p className="text-foreground/70 font-light text-sm whitespace-nowrap">Premium Plots</p>
                 </div>
-                <p className="text-foreground/70 font-light text-lg">Premium Plots</p>
               </div>
             </div>
           </div>
