@@ -205,29 +205,45 @@ export default function Home() {
 
       {/* Immersive Storytelling */}
       <section className="py-40 px-6 bg-background relative z-10">
-        <div className="container mx-auto">
-          <div className="max-w-5xl mx-auto">
-            <h2 className="text-5xl md:text-7xl font-semibold tracking-tight mb-20 reveal-text leading-tight">
-              No confusion <br />
-              <span className="text-foreground/60">No surprises Only growth</span>
-            </h2>
+        <div className="container mx-auto max-w-6xl">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24 items-center">
+            
+            {/* Left Column: Content */}
+            <div className="lg:col-span-7">
+              <h2 className="text-5xl md:text-7xl font-semibold tracking-tight mb-16 reveal-text leading-tight">
+                No confusion <br />
+                <span className="text-foreground/60">No surprises Only growth</span>
+              </h2>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-20 mt-32">
-              <div className="space-y-10 reveal-text group">
-                <div className="h-px w-full bg-border group-hover:bg-accent transition-colors duration-500" />
-                <h3 className="text-3xl font-medium tracking-tight">Curated Growth</h3>
-                <p className="text-foreground/80 leading-relaxed font-light text-lg">
-                  Every project is meticulously vetted for geometric appreciation. We analyze infrastructure pipelines, corporate expansions, and municipal zoning to ensure your plot is positioned perfectly in the path of progress.
-                </p>
-              </div>
-              <div className="space-y-10 reveal-text group">
-                <div className="h-px w-full bg-border group-hover:bg-accent transition-colors duration-500" />
-                <h3 className="text-3xl font-medium tracking-tight">Absolute Security</h3>
-                <p className="text-foreground/80 leading-relaxed font-light text-lg">
-                  Investment without anxiety. From rigorous title scrutiny to seamless registration, our legal framework provides an impenetrable shield for your capital.
-                </p>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mt-16">
+                <div className="space-y-6 reveal-text group">
+                  <div className="h-px w-full bg-border group-hover:bg-accent transition-colors duration-500" />
+                  <h3 className="text-2xl font-medium tracking-tight">Curated Growth</h3>
+                  <p className="text-foreground/80 leading-relaxed font-light text-base">
+                    Every project is meticulously vetted for geometric appreciation. We analyze infrastructure pipelines, corporate expansions, and municipal zoning to ensure your plot is positioned perfectly in the path of progress.
+                  </p>
+                </div>
+                <div className="space-y-6 reveal-text group">
+                  <div className="h-px w-full bg-border group-hover:bg-accent transition-colors duration-500" />
+                  <h3 className="text-2xl font-medium tracking-tight">Absolute Security</h3>
+                  <p className="text-foreground/80 leading-relaxed font-light text-base">
+                    Investment without anxiety. From rigorous title scrutiny to seamless registration, our legal framework provides an impenetrable shield for your capital.
+                  </p>
+                </div>
               </div>
             </div>
+
+            {/* Right Column: Image */}
+            <div className="lg:col-span-5 reveal-card">
+              <div className="relative overflow-hidden aspect-[4/5] border border-border/40 bg-muted">
+                <img 
+                  src="/assets/images/other images/for home page.png" 
+                  alt="True Waves Premium Land" 
+                  className="w-full h-full object-cover transition-transform duration-1000 hover:scale-105"
+                />
+              </div>
+            </div>
+
           </div>
         </div>
       </section>
