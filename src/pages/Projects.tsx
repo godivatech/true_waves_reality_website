@@ -303,7 +303,7 @@ export default function Projects() {
                     exit={{ opacity: 0, scale: 0.9, y: 20 }}
                     transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
                     key={p.id} 
-                    className="group cursor-pointer"
+                    className={`group cursor-pointer ${p.wide ? "lg:col-span-2" : "lg:col-span-1"}`}
                     onClick={() => {
                       if (p.gallery) {
                         setSelectedGallery({ title: p.title, images: p.gallery });
@@ -311,7 +311,7 @@ export default function Projects() {
                       }
                     }}
                   >
-                    <div className="relative overflow-hidden aspect-[4/3] mb-6">
+                    <div className={`relative overflow-hidden mb-6 ${p.wide ? "aspect-[16/9] lg:aspect-[21/9]" : "aspect-[4/3]"}`}>
                       {p.img.endsWith('.mp4') ? (
                         <video
                           src={p.img}
