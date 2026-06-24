@@ -187,7 +187,7 @@ export default function WhyUs() {
 
       {/* Split Image + Stats */}
       <section className="py-0 bg-[#F5F5F0] relative overflow-hidden">
-        <div className="grid grid-cols-1 lg:grid-cols-2 lg:h-[650px]">
+        <div className="grid grid-cols-1 lg:grid-cols-2 lg:h-[700px]">
           <div className="relative overflow-hidden h-80 lg:h-full">
             <img src={STATS_IMAGE} alt="Investment" className="w-full h-full object-cover" />
             <div className="absolute inset-0 bg-[#0A1128]/20" />
