@@ -196,14 +196,15 @@ export default function About() {
 
       {/* Comparison Section */}
       <section className="py-32 px-6 bg-background border-t border-border/40">
-        <div className="container mx-auto max-w-6xl">
+        <div className="container mx-auto">
           <span className="text-accent text-sm tracking-[0.3em] uppercase font-medium block mb-6 reveal-text">
             The True Waves Difference
           </span>
           <h2 className="text-4xl md:text-6xl font-semibold tracking-tighter mb-20 reveal-text text-foreground">
             We solve every problem<br className="hidden md:block" /> you've faced in real estate
           </h2>
-
+        </div>
+        <div className="container mx-auto max-w-6xl">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
             {/* The Old Way */}
             <div className="space-y-8 reveal-card">
@@ -282,10 +283,12 @@ export default function About() {
 
       {/* Timeline */}
       <section className="py-32 px-6 bg-background">
-        <div className="container mx-auto max-w-5xl">
+        <div className="container mx-auto">
           <h2 className="text-5xl md:text-7xl font-semibold tracking-tighter mb-24 reveal-text">
             12 Years of <span className="text-muted-foreground/30 font-light">Milestones</span>
           </h2>
+        </div>
+        <div className="container mx-auto max-w-5xl">
           <div className="relative">
             <div className="absolute left-16 md:left-24 top-0 bottom-0 w-px bg-border/50" />
             {milestones.map((m) => (
@@ -306,10 +309,12 @@ export default function About() {
 
       {/* Team */}
       <section className="py-32 px-6 bg-[#F5F5F0]">
-        <div className="container mx-auto max-w-5xl">
+        <div className="container mx-auto">
           <h2 className="text-5xl md:text-7xl font-semibold tracking-tighter mb-24 reveal-text">
             The People <span className="text-muted-foreground/30 font-light">Behind It</span>
           </h2>
+        </div>
+        <div className="container mx-auto max-w-5xl">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-24">
             {team.map((member, i) => (
               <div key={member.name} className="reveal-card group">
