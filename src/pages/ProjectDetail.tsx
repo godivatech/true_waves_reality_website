@@ -405,7 +405,16 @@ export default function ProjectDetail() {
                 <div className="space-y-3 text-sm">
                   <div className="flex justify-between">
                     <span className="text-muted-foreground font-light">Project Type</span>
-                    <span className="font-semibold">{project.type}</span>
+                    <span className="font-semibold flex items-center gap-2">
+                      {project.type.includes("(Upcoming)") ? (
+                        <>
+                          <span>{project.type.replace("(Upcoming)", "").trim()}</span>
+                          <span className="px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider bg-accent text-white rounded-sm select-none shadow-sm">
+                            Upcoming
+                          </span>
+                        </>
+                      ) : project.type}
+                    </span>
                   </div>
                   <div className="flex justify-between">
                     <span className="text-muted-foreground font-light">Total Area</span>

@@ -161,29 +161,6 @@ export default function Projects() {
         </div>
       </section>
 
-      {/* Filter Bar */}
-      <div id="projects-feed" className="sticky top-[64px] md:top-[88px] scroll-mt-[64px] md:scroll-mt-[88px] z-30 bg-background/90 backdrop-blur-md border-b border-border/50 py-4 px-6 overflow-hidden">
-        <div className="container mx-auto relative">
-          <div className="flex gap-4 md:gap-8 overflow-x-auto scrollbar-hide pb-2 snap-x snap-mandatory">
-            {["All", "Plots", "Residential", "Premium"].map((f) => (
-              <button
-                key={f}
-                onClick={() => navigate(`/projects?filter=${encodeURIComponent(f)}`)}
-                data-testid={`button-filter-${f.toLowerCase().replace(" ", "-")}`}
-                className={`text-xs md:text-sm tracking-[0.2em] uppercase whitespace-nowrap pb-2 border-b-2 transition-all duration-300 font-medium snap-start ${activeFilter === f
-                  ? "border-accent text-foreground"
-                  : "border-transparent text-muted-foreground hover:text-foreground hover:border-border"
-                  }`}
-              >
-                {f}
-              </button>
-            ))}
-          </div>
-          {/* Subtle fade indicator for mobile overflow */}
-          <div className="absolute right-0 top-0 h-full w-12 bg-gradient-to-l from-background to-transparent pointer-events-none md:hidden" />
-        </div>
-      </div>
-
       {/* Featured Projects Grid */}
       <section className="pt-24 pb-24 px-6 bg-background">
         <div className="container mx-auto">
@@ -194,6 +171,28 @@ export default function Projects() {
             <p className="text-muted-foreground font-light text-sm tracking-widest uppercase hidden md:block reveal-text pb-2">
               {filteredProjects.length} Properties
             </p>
+          </div>
+
+          {/* Filter Bar */}
+          <div id="projects-feed" className="sticky top-[64px] md:top-[88px] scroll-mt-[64px] md:scroll-mt-[88px] z-30 bg-background/90 backdrop-blur-md border-b border-border/50 py-4 mb-16 overflow-hidden">
+            <div className="relative">
+              <div className="flex gap-4 md:gap-8 overflow-x-auto scrollbar-hide pb-2 snap-x snap-mandatory">
+                {["All", "Plots", "Residential", "Premium"].map((f) => (
+                  <button
+                    key={f}
+                    onClick={() => navigate(`/projects?filter=${encodeURIComponent(f)}`)}
+                    data-testid={`button-filter-${f.toLowerCase().replace(" ", "-")}`}
+                    className={`text-xs md:text-sm tracking-[0.2em] uppercase whitespace-nowrap pb-2 border-b-2 transition-all duration-300 font-medium snap-start ${activeFilter === f
+                      ? "border-accent text-foreground"
+                      : "border-transparent text-muted-foreground hover:text-foreground hover:border-border"
+                      }`}
+                  >
+                    {f}
+                  </button>
+                ))}
+              </div>
+              <div className="absolute right-0 top-0 h-full w-12 bg-gradient-to-l from-background to-transparent pointer-events-none md:hidden" />
+            </div>
           </div>
 
           <div className={filteredProjects.length === 1 
@@ -247,7 +246,16 @@ export default function Projects() {
                       <p className="text-accent text-xs tracking-widest uppercase font-medium">{p.location}</p>
                       <div className="flex justify-between items-start">
                         <h3 className="text-2xl md:text-3xl font-medium tracking-tight">{p.title}</h3>
-                        <p className="text-foreground/70 font-light text-sm text-right">{p.type}</p>
+                        <p className="text-foreground/70 font-light text-sm text-right flex items-center justify-end gap-2">
+                          {p.type.includes("(Upcoming)") ? (
+                            <>
+                              <span>{p.type.replace("(Upcoming)", "").trim()}</span>
+                              <span className="px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider bg-accent text-white rounded-sm select-none shadow-sm">
+                                Upcoming
+                              </span>
+                            </>
+                          ) : p.type}
+                        </p>
                       </div>
                       <p className="text-foreground/70 font-light text-sm mt-1 leading-relaxed">{p.desc}</p>
                       <div className="flex gap-6 mt-2 pt-4 border-t border-border/50">
