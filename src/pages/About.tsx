@@ -330,33 +330,33 @@ export default function About() {
       </section>
 
       {/* Contact */}
-      <section className="py-32 bg-[#0A1128] text-white px-6">
+      <section className="py-32 bg-slate-50 text-[#0A1128] px-6 border-t border-border/40">
         <div className="container mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-20 items-center">
             <div>
-              <h2 className="text-5xl md:text-7xl font-semibold tracking-tighter mb-10 reveal-text leading-tight">
+              <h2 className="text-5xl md:text-7xl font-semibold tracking-tighter mb-10 reveal-text leading-tight text-[#0A1128]">
                 Let's talk<br />about your<br />future.
               </h2>
-              <p className="text-white/50 font-light text-xl leading-relaxed max-w-sm reveal-text">
+              <p className="text-[#0A1128]/70 font-light text-xl leading-relaxed max-w-sm reveal-text">
                 Reach us directly. No queues, no call centres — a real conversation with a real advisor.
               </p>
             </div>
             <div className="flex flex-col gap-8 reveal-card">
-              <div className="border-b border-white/10 pb-8">
-                <p className="text-white/40 text-xs tracking-widest uppercase mb-3">Phone</p>
-                <a href="tel:+919876543210" className="text-3xl font-light tracking-tight hover:text-accent transition-colors duration-300">
+              <div className="border-b border-[#0A1128]/10 pb-8">
+                <p className="text-[#0A1128]/40 text-xs tracking-widest uppercase mb-3">Phone</p>
+                <a href="tel:+919876543210" className="text-3xl font-light tracking-tight hover:text-accent transition-colors duration-300 text-[#0A1128]">
                   +91 98765 43210
                 </a>
               </div>
-              <div className="border-b border-white/10 pb-8">
-                <p className="text-white/40 text-xs tracking-widest uppercase mb-3">Email</p>
-                <a href="mailto:invest@truewaves.in" className="text-3xl font-light tracking-tight hover:text-accent transition-colors duration-300">
+              <div className="border-b border-[#0A1128]/10 pb-8">
+                <p className="text-[#0A1128]/40 text-xs tracking-widest uppercase mb-3">Email</p>
+                <a href="mailto:invest@truewaves.in" className="text-3xl font-light tracking-tight hover:text-accent transition-colors duration-300 text-[#0A1128]">
                   invest@truewaves.in
                 </a>
               </div>
-              <div className="border-b border-white/10 pb-8">
-                <p className="text-white/40 text-xs tracking-widest uppercase mb-3">Office</p>
-                <p className="text-xl font-light text-white/70 leading-relaxed">
+              <div className="border-b border-[#0A1128]/10 pb-8">
+                <p className="text-[#0A1128]/40 text-xs tracking-widest uppercase mb-3">Office</p>
+                <p className="text-xl font-light text-[#0A1128]/70 leading-relaxed">
                   17/13, Easwaran Koil Street,<br />
                   Vellai thottam, West Mambalam,<br />
                   Chennai - 600033
@@ -375,7 +375,7 @@ export default function About() {
                 <a
                   href="/invest"
                   data-testid="button-about-invest"
-                  className="flex-1 py-4 bg-white text-[#0A1128] font-medium text-center rounded-sm hover:bg-accent hover:text-white transition-colors duration-300 tracking-wide"
+                  className="flex-1 py-4 bg-[#0A1128] text-white font-medium text-center rounded-sm hover:bg-accent transition-colors duration-300 tracking-wide"
                 >
                   Book a Call
                 </a>

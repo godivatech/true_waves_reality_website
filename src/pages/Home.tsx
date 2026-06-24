@@ -403,19 +403,19 @@ export default function Home() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-52 bg-primary text-white text-center px-6 relative overflow-hidden">
-        <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 mix-blend-soft-light pointer-events-none"></div>
+      <section className="py-52 bg-slate-50 text-[#0A1128] text-center px-6 relative overflow-hidden border-t border-border/40">
+        <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-5 pointer-events-none"></div>
         <div className="container mx-auto max-w-5xl flex flex-col items-center relative z-10">
-          <h2 className="text-3xl sm:text-5xl md:text-9xl font-semibold tracking-tighter mb-10 reveal-text whitespace-nowrap">
+          <h2 className="text-3xl sm:text-5xl md:text-9xl font-semibold tracking-tighter mb-10 reveal-text whitespace-nowrap text-[#0A1128]">
             Secure Your Legacy
           </h2>
-          <p className="text-2xl text-white/50 font-light mb-20 max-w-3xl reveal-text leading-relaxed">
+          <p className="text-2xl text-[#0A1128]/70 font-light mb-20 max-w-3xl reveal-text leading-relaxed">
             Schedule a private consultation with our investment advisors to discover off-market opportunities before they launch.
           </p>
           <button
             onClick={() => setIsModalOpen(true)}
             data-testid="button-final-cta"
-            className="group relative px-12 py-6 bg-white text-primary font-medium overflow-hidden rounded-sm transition-all hover:scale-105 duration-500 reveal-text hover:shadow-[0_0_40px_rgba(255,255,255,0.2)]"
+            className="group relative px-12 py-6 bg-[#0A1128] text-white font-medium overflow-hidden rounded-sm transition-all hover:scale-105 duration-500 reveal-text hover:shadow-[0_10px_30px_rgba(10,17,40,0.15)]"
           >
             <span className="relative z-10 tracking-wide text-xl">Book a Consultation</span>
             <div className="absolute inset-0 h-full w-0 bg-accent transition-all duration-500 ease-out group-hover:w-full z-0" />

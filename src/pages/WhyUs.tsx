@@ -245,18 +245,18 @@ export default function WhyUs() {
       </section>
 
       {/* CTA */}
-      <section className="py-32 bg-[#0A1128] text-white text-center px-6">
+      <section className="py-32 bg-slate-50 text-[#0A1128] text-center px-6 border-t border-border/40">
         <div className="container mx-auto max-w-4xl">
-          <h2 className="text-5xl md:text-8xl font-semibold tracking-tighter mb-10 reveal-text">
+          <h2 className="text-5xl md:text-8xl font-semibold tracking-tighter mb-10 reveal-text text-[#0A1128]">
             Ready to Invest<br />With Confidence?
           </h2>
-          <p className="text-white/50 font-light text-xl mb-16 max-w-xl mx-auto reveal-text">
+          <p className="text-[#0A1128]/70 font-light text-xl mb-16 max-w-xl mx-auto reveal-text">
             Join 500+ investors who trusted True Waves to grow their wealth through land.
           </p>
           <a
             href="/invest"
             data-testid="button-whyus-cta"
-            className="group inline-flex items-center gap-4 px-10 py-5 bg-white text-[#0A1128] font-medium rounded-sm hover:scale-105 transition-transform duration-500 text-lg tracking-wide"
+            className="group inline-flex items-center gap-4 px-10 py-5 bg-[#0A1128] text-white font-medium rounded-sm hover:scale-105 transition-transform duration-500 text-lg tracking-wide hover:bg-accent transition-colors duration-300"
           >
             Begin Your Journey
             <svg className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
