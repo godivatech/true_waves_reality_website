@@ -340,7 +340,7 @@ export default function About() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-20 items-center">
             <div>
               <h2 className="text-4xl md:text-6xl font-semibold tracking-tighter mb-10 reveal-text leading-tight text-[#0A1128]">
-                Let's talk<br />about your<br />future
+                Let's talk<br className="md:hidden" /> about your<br className="md:hidden" /> future
               </h2>
               <p className="text-[#0A1128]/70 font-light text-xl leading-relaxed max-w-sm reveal-text">
                 Reach us directly. No queues, no call centres — a real conversation with a real advisor.
