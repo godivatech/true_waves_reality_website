@@ -12,6 +12,46 @@ import heroImg from "@/assets/images/hero-aerial.png";
 
 import { useLocation } from "wouter";
 
+function useUrlLocation() {
+  const [location, setLocation] = useState(() => ({
+    pathname: window.location.pathname,
+    search: window.location.search,
+  }));
+
+  useEffect(() => {
+    const handleLocationChange = () => {
+      setLocation({
+        pathname: window.location.pathname,
+        search: window.location.search,
+      });
+    };
+
+    window.addEventListener("popstate", handleLocationChange);
+    window.addEventListener("pushState", handleLocationChange);
+    window.addEventListener("replaceState", handleLocationChange);
+
+    const interval = setInterval(() => {
+      const currentPath = window.location.pathname;
+      const currentSearch = window.location.search;
+      setLocation((prev) => {
+        if (prev.pathname !== currentPath || prev.search !== currentSearch) {
+          return { pathname: currentPath, search: currentSearch };
+        }
+        return prev;
+      });
+    }, 100);
+
+    return () => {
+      window.removeEventListener("popstate", handleLocationChange);
+      window.removeEventListener("pushState", handleLocationChange);
+      window.removeEventListener("replaceState", handleLocationChange);
+      clearInterval(interval);
+    };
+  }, []);
+
+  return location;
+}
+
 const IMAGEKIT_URL = import.meta.env.VITE_IMAGEKIT_URL || "https://ik.imagekit.io/15s95izzpx";
 
 const getImg = (path: string, transform?: string) => {
@@ -110,20 +150,37 @@ export default function Projects() {
   const [activeFilter, setActiveFilter] = useState("All");
   const [selectedGallery, setSelectedGallery] = useState<{title: string, images: string[]} | null>(null);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
-  const [location] = useLocation();
+  const [, navigate] = useLocation();
+  const { search } = useUrlLocation();
 
   useEffect(() => {
-    const params = new URLSearchParams(window.location.search);
+    const params = new URLSearchParams(search);
     const filterParam = params.get("filter");
     if (filterParam) {
       const decodedFilter = decodeURIComponent(filterParam);
-      if (["All", "Residential", "Commercial", "Agricultural", "Premium Villas"].includes(decodedFilter)) {
-        setActiveFilter(decodedFilter);
+      const matched = ["All", "Residential", "Commercial", "Agricultural", "Premium Villas"].find(
+        (f) => f.toLowerCase() === decodedFilter.toLowerCase()
+      );
+      if (matched) {
+        setActiveFilter(matched);
       }
     } else {
       setActiveFilter("All");
     }
-  }, [location]);
+  }, [search]);
+
+  useEffect(() => {
+    const params = new URLSearchParams(search);
+    if (params.has("filter")) {
+      const timer = setTimeout(() => {
+        const element = document.getElementById("projects-feed");
+        if (element) {
+          element.scrollIntoView({ behavior: "smooth", block: "start" });
+        }
+      }, 100);
+      return () => clearTimeout(timer);
+    }
+  }, [search]);
 
   const filteredProjects = activeFilter === "All" 
     ? projects 
@@ -201,13 +258,13 @@ export default function Projects() {
       </section>
 
       {/* Filter Bar */}
-      <div className="sticky top-[64px] md:top-[88px] z-30 bg-background/90 backdrop-blur-md border-b border-border/50 py-4 px-6 overflow-hidden">
+      <div id="projects-feed" className="sticky top-[64px] md:top-[88px] scroll-mt-[64px] md:scroll-mt-[88px] z-30 bg-background/90 backdrop-blur-md border-b border-border/50 py-4 px-6 overflow-hidden">
         <div className="container mx-auto relative">
           <div className="flex gap-4 md:gap-8 overflow-x-auto scrollbar-hide pb-2 snap-x snap-mandatory">
             {["All", "Residential", "Commercial", "Agricultural", "Premium Villas"].map((f) => (
               <button
                 key={f}
-                onClick={() => setActiveFilter(f)}
+                onClick={() => navigate(`/projects?filter=${encodeURIComponent(f)}`)}
                 data-testid={`button-filter-${f.toLowerCase().replace(" ", "-")}`}
                 className={`text-xs md:text-sm tracking-[0.2em] uppercase whitespace-nowrap pb-2 border-b-2 transition-all duration-300 font-medium snap-start ${activeFilter === f
                   ? "border-accent text-foreground"
@@ -223,98 +280,95 @@ export default function Projects() {
         </div>
       </div>
 
-      {/* Featured Banner */}
-      <section className="pt-24 pb-12 px-6 bg-background">
+      {/* Featured Projects Grid */}
+      <section className="pt-24 pb-24 px-6 bg-background">
         <div className="container mx-auto">
-          <div className="flex justify-between items-end mb-20">
-            <h2 className="text-5xl md:text-7xl font-semibold tracking-tighter mb-24 reveal-text">
+          <div className="flex justify-between items-end mb-12">
+            <h2 className="text-5xl md:text-7xl font-semibold tracking-tighter reveal-text">
               Featured <span className="text-muted-foreground/30 font-light">Projects</span>
             </h2>
-            <p className="text-muted-foreground font-light text-sm tracking-widest uppercase hidden md:block reveal-text">
+            <p className="text-muted-foreground font-light text-sm tracking-widest uppercase hidden md:block reveal-text pb-2">
               {filteredProjects.length} Properties
             </p>
           </div>
-        </div>
-      </section>
 
-      {/* Grid */}
-      <section className="py-12 px-6 bg-background">
-        <div className="container mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-12">
-            {filteredProjects.map((p) => {
-              return (
-                <motion.div 
-                  layout
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, scale: 0.95 }}
-                  transition={{ duration: 0.5, ease: "easeOut" }}
-                  key={p.id} 
-                  className="group cursor-pointer reveal-card"
-                  onClick={() => {
-                    if (p.gallery) {
-                      setSelectedGallery({ title: p.title, images: p.gallery });
-                      setCurrentImageIndex(0);
-                    }
-                  }}
-                >
-                  <div className="relative overflow-hidden aspect-[4/3] mb-6">
-                    {p.img.endsWith('.mp4') ? (
-                      <video
-                        src={p.img}
-                        autoPlay
-                        loop
-                        muted
-                        playsInline
-                        className="w-full h-full object-cover transition-transform duration-[1200ms] group-hover:scale-105"
-                      />
-                    ) : (
-                      <img
-                        src={p.img}
-                        alt={p.title}
-                        className="w-full h-full object-cover transition-transform duration-[1200ms] group-hover:scale-105"
-                      />
-                    )}
-                    <div className="absolute inset-0 bg-[#0A1128]/5 group-hover:bg-transparent transition-colors duration-700" />
-                    
-                    {p.gallery && (
-                      <div className="absolute bottom-5 right-5 w-12 h-12 bg-white/10 backdrop-blur-xl border border-white/20 rounded-full flex items-center justify-center text-white opacity-0 group-hover:opacity-100 transition-all duration-500">
-                        <Maximize2 size={20} />
-                      </div>
-                    )}
+            <AnimatePresence mode="popLayout">
+              {filteredProjects.map((p) => {
+                return (
+                  <motion.div 
+                    layout
+                    initial={{ opacity: 0, y: 30 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, scale: 0.9, y: 20 }}
+                    transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+                    key={p.id} 
+                    className="group cursor-pointer"
+                    onClick={() => {
+                      if (p.gallery) {
+                        setSelectedGallery({ title: p.title, images: p.gallery });
+                        setCurrentImageIndex(0);
+                      }
+                    }}
+                  >
+                    <div className="relative overflow-hidden aspect-[4/3] mb-6">
+                      {p.img.endsWith('.mp4') ? (
+                        <video
+                          src={p.img}
+                          autoPlay
+                          loop
+                          muted
+                          playsInline
+                          className="w-full h-full object-cover transition-transform duration-[1200ms] group-hover:scale-105"
+                        />
+                      ) : (
+                        <img
+                          src={p.img}
+                          alt={p.title}
+                          className="w-full h-full object-cover transition-transform duration-[1200ms] group-hover:scale-105"
+                        />
+                      )}
+                      <div className="absolute inset-0 bg-[#0A1128]/5 group-hover:bg-transparent transition-colors duration-700" />
+                      
+                      {p.gallery && (
+                        <div className="absolute bottom-5 right-5 w-12 h-12 bg-white/10 backdrop-blur-xl border border-white/20 rounded-full flex items-center justify-center text-white opacity-0 group-hover:opacity-100 transition-all duration-500">
+                          <Maximize2 size={20} />
+                        </div>
+                      )}
 
-                    <span className="absolute top-5 left-5 px-3 py-1 bg-white/10 backdrop-blur-md text-white text-xs tracking-widest uppercase border border-white/20">
-                      {p.tag}
-                    </span>
-                    <div className="absolute bottom-5 right-5 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                      <div className="w-10 h-10 bg-white flex items-center justify-center">
-                        <svg className="w-5 h-5 text-[#0A1128]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                        </svg>
+                      <span className="absolute top-5 left-5 px-3 py-1 bg-white/10 backdrop-blur-md text-white text-xs tracking-widest uppercase border border-white/20">
+                        {p.tag}
+                      </span>
+                      <div className="absolute bottom-5 right-5 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                        <div className="w-10 h-10 bg-white flex items-center justify-center">
+                          <svg className="w-5 h-5 text-[#0A1128]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                          </svg>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                  <div className="flex flex-col gap-2">
-                    <p className="text-accent text-xs tracking-widest uppercase font-medium">{p.location}</p>
-                    <div className="flex justify-between items-start">
-                      <h3 className="text-2xl md:text-3xl font-medium tracking-tight">{p.title}</h3>
-                      <p className="text-foreground/70 font-light text-sm text-right">{p.type}</p>
-                    </div>
-                    <p className="text-foreground/70 font-light text-sm mt-1 leading-relaxed">{p.desc}</p>
-                    <div className="flex gap-6 mt-2 pt-4 border-t border-border/50">
-                      <div>
-                        <p className="text-xs text-muted-foreground tracking-widest uppercase mb-1">Area</p>
-                        <p className="text-sm font-medium">{p.area}</p>
+                    <div className="flex flex-col gap-2">
+                      <p className="text-accent text-xs tracking-widest uppercase font-medium">{p.location}</p>
+                      <div className="flex justify-between items-start">
+                        <h3 className="text-2xl md:text-3xl font-medium tracking-tight">{p.title}</h3>
+                        <p className="text-foreground/70 font-light text-sm text-right">{p.type}</p>
                       </div>
-                      <div>
-                        <p className="text-xs text-muted-foreground tracking-widest uppercase mb-1">Price</p>
-                        <p className="text-sm font-medium">{p.price}</p>
+                      <p className="text-foreground/70 font-light text-sm mt-1 leading-relaxed">{p.desc}</p>
+                      <div className="flex gap-6 mt-2 pt-4 border-t border-border/50">
+                        <div>
+                          <p className="text-xs text-muted-foreground tracking-widest uppercase mb-1">Area</p>
+                          <p className="text-sm font-medium">{p.area}</p>
+                        </div>
+                        <div>
+                          <p className="text-xs text-muted-foreground tracking-widest uppercase mb-1">Price</p>
+                          <p className="text-sm font-medium">{p.price}</p>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                </motion.div>
-              );
-            })}
+                  </motion.div>
+                );
+              })}
+            </AnimatePresence>
           </div>
         </div>
       </section>

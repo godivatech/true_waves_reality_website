@@ -1,13 +1,67 @@
 import { useState, useEffect } from "react";
-import { Link, useLocation } from "wouter";
+import { Link, useRouter } from "wouter";
 import ConsultationModal from "./ConsultationModal";
+
+function useUrlLocation() {
+  const [location, setLocation] = useState(() => ({
+    pathname: window.location.pathname,
+    search: window.location.search,
+  }));
+
+  useEffect(() => {
+    const handleLocationChange = () => {
+      setLocation({
+        pathname: window.location.pathname,
+        search: window.location.search,
+      });
+    };
+
+    window.addEventListener("popstate", handleLocationChange);
+    window.addEventListener("pushState", handleLocationChange);
+    window.addEventListener("replaceState", handleLocationChange);
+
+    const interval = setInterval(() => {
+      const currentPath = window.location.pathname;
+      const currentSearch = window.location.search;
+      setLocation((prev) => {
+        if (prev.pathname !== currentPath || prev.search !== currentSearch) {
+          return { pathname: currentPath, search: currentSearch };
+        }
+        return prev;
+      });
+    }, 100);
+
+    return () => {
+      window.removeEventListener("popstate", handleLocationChange);
+      window.removeEventListener("pushState", handleLocationChange);
+      window.removeEventListener("replaceState", handleLocationChange);
+      clearInterval(interval);
+    };
+  }, []);
+
+  return location;
+}
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [dropdownOpen, setDropdownOpen] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [location] = useLocation();
-  const isHome = location === "/";
+  const { pathname: locationPath, search } = useUrlLocation();
+  const router = useRouter();
+  const base = router.base || "";
+  const relativeLocation = locationPath.startsWith(base)
+    ? locationPath.slice(base.length) || "/"
+    : locationPath;
+  const isHome = relativeLocation === "/";
+
+  const isItemActive = (itemHref: string) => {
+    const [itemPath, itemQuery] = itemHref.split("?");
+    if (relativeLocation !== itemPath) return false;
+    const itemFilter = new URLSearchParams(itemQuery).get("filter") || "All";
+    const currentFilter = new URLSearchParams(search).get("filter") || "All";
+    return itemFilter.toLowerCase() === currentFilter.toLowerCase();
+  };
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50);
@@ -17,7 +71,7 @@ export default function Navbar() {
 
   useEffect(() => {
     setMenuOpen(false);
-  }, [location]);
+  }, [relativeLocation]);
 
   const navLinks = [
     { href: "/", label: "Home" },
@@ -65,10 +119,16 @@ export default function Navbar() {
             {navLinks.map((link) => {
               if (link.dropdownItems) {
                 return (
-                  <div key={link.href} className="relative group py-2">
+                  <div 
+                    key={link.href} 
+                    className="relative py-2"
+                    onMouseEnter={() => setDropdownOpen(true)}
+                    onMouseLeave={() => setDropdownOpen(false)}
+                  >
                     <Link
                       href={link.href}
-                      className={`text-sm font-medium tracking-wide transition-colors duration-300 flex items-center gap-1.5 ${location.startsWith(link.href)
+                      onClick={() => setDropdownOpen(false)}
+                      className={`text-sm font-medium tracking-wide transition-colors duration-300 flex items-center gap-1.5 ${relativeLocation.startsWith(link.href)
                         ? "text-accent"
                         : "text-white/80 hover:text-white"
                         }`}
@@ -76,7 +136,7 @@ export default function Navbar() {
                     >
                       {link.label}
                       <svg
-                        className="w-3.5 h-3.5 transition-transform duration-300 group-hover:rotate-180 opacity-70"
+                        className={`w-3.5 h-3.5 transition-transform duration-300 opacity-70 ${dropdownOpen ? "rotate-180" : ""}`}
                         fill="none"
                         viewBox="0 0 24 24"
                         stroke="currentColor"
@@ -86,17 +146,32 @@ export default function Navbar() {
                     </Link>
 
                     {/* Dropdown Menu */}
-                    <div className="absolute top-full left-1/2 -translate-x-1/2 pt-3 w-56 opacity-0 translate-y-2 pointer-events-none group-hover:opacity-100 group-hover:translate-y-0 group-hover:pointer-events-auto transition-all duration-300 ease-out z-50">
+                    <div 
+                      className={`absolute top-full left-1/2 -translate-x-1/2 pt-3 w-56 transition-all duration-300 ease-out z-50 ${
+                        dropdownOpen 
+                          ? "opacity-100 translate-y-0 pointer-events-auto" 
+                          : "opacity-0 translate-y-2 pointer-events-none"
+                      }`}
+                    >
                       <div className="bg-[#0A1128]/95 backdrop-blur-lg border border-white/10 rounded-sm p-3 shadow-2xl flex flex-col gap-1">
                         {link.dropdownItems.map((item) => (
                           <Link
                             key={item.href}
                             href={item.href}
-                            className="text-[11px] font-medium tracking-widest uppercase text-white/70 hover:text-accent hover:bg-white/5 px-4 py-3 rounded-sm transition-all duration-300 flex items-center justify-between group/item"
+                            onClick={() => setDropdownOpen(false)}
+                            className={`text-[11px] font-medium tracking-widest uppercase px-4 py-3 rounded-sm transition-all duration-300 flex items-center justify-between group/item ${
+                              isItemActive(item.href)
+                                ? "text-accent bg-white/5"
+                                : "text-white/70 hover:text-accent hover:bg-white/5"
+                            }`}
                           >
                             <span>{item.label}</span>
                             <svg
-                              className="w-3 h-3 opacity-0 -translate-x-2 group-hover/item:opacity-100 group-hover/item:translate-x-0 transition-all duration-300"
+                              className={`w-3 h-3 transition-all duration-300 ${
+                                isItemActive(item.href)
+                                  ? "opacity-100 translate-x-0"
+                                  : "opacity-0 -translate-x-2 group-hover/item:opacity-100 group-hover/item:translate-x-0"
+                              }`}
                               fill="none"
                               viewBox="0 0 24 24"
                               stroke="currentColor"
@@ -115,7 +190,7 @@ export default function Navbar() {
                 <Link
                   key={link.href}
                   href={link.href}
-                  className={`text-sm font-medium tracking-wide transition-colors duration-300 ${location === link.href
+                  className={`text-sm font-medium tracking-wide transition-colors duration-300 ${relativeLocation === link.href
                     ? "text-accent"
                     : "text-white/80 hover:text-white"
                     }`}
@@ -175,7 +250,9 @@ export default function Navbar() {
                       key={item.href}
                       href={item.href}
                       onClick={() => setMenuOpen(false)}
-                      className="text-white/50 hover:text-accent text-sm tracking-widest uppercase transition-colors"
+                      className={`text-sm tracking-widest uppercase transition-colors ${
+                        isItemActive(item.href) ? "text-accent" : "text-white/50 hover:text-accent"
+                      }`}
                     >
                       {item.label}
                     </Link>
