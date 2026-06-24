@@ -10,6 +10,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import NotFound from "@/pages/not-found";
 import Home from "@/pages/Home";
 import Projects from "@/pages/Projects";
+import ProjectDetail from "@/pages/ProjectDetail";
 import WhyUs from "@/pages/WhyUs";
 import Invest from "@/pages/Invest";
 import About from "@/pages/About";
@@ -52,6 +53,7 @@ function Router() {
     <Switch key={location}>
       <Route path="/" component={Home} />
       <Route path="/projects" component={Projects} />
+      <Route path="/projects/:slug" component={ProjectDetail} />
       <Route path="/why-us" component={WhyUs} />
       <Route path="/invest" component={Invest} />
       <Route path="/about" component={About} />

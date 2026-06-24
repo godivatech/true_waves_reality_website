@@ -81,9 +81,9 @@ export default function Navbar() {
       label: "Projects",
       dropdownItems: [
         { href: "/projects?filter=All", label: "All Projects" },
+        { href: "/projects?filter=Plots", label: "Plots" },
         { href: "/projects?filter=Residential", label: "Residential" },
-        { href: "/projects?filter=Commercial", label: "Commercial" },
-        { href: "/projects?filter=Premium Villas", label: "Premium Villas" },
+        { href: "/projects?filter=Premium", label: "Premium" },
       ]
     },
     { href: "/why-us", label: "Why Us" },

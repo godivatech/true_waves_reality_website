@@ -331,49 +331,55 @@ export default function Home() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-12">
             {/* Project 1 */}
-            <div className="group cursor-pointer reveal-text">
-              <div className="relative overflow-hidden aspect-[4/3] mb-6">
-                <img src={getImg("True waves/True waves Reality/fairland/1.jpeg")} alt="Residential Plot" className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105" />
-                <div className="absolute inset-0 bg-primary/5 group-hover:bg-transparent transition-colors duration-500" />
-              </div>
-              <div className="flex flex-col gap-2">
-                <p className="text-accent text-sm tracking-widest uppercase mb-1 font-medium">Madurai</p>
-                <div className="flex justify-between items-baseline gap-4">
-                  <h3 className="text-2xl md:text-3xl font-medium tracking-tight group-hover:text-accent transition-colors duration-300">Fairland Township</h3>
-                  <p className="text-foreground/70 font-light text-sm whitespace-nowrap">Integrated Township</p>
+            <Link href="/projects/fairland" className="group cursor-pointer reveal-text block">
+              <div>
+                <div className="relative overflow-hidden aspect-[4/3] mb-6">
+                  <img src={getImg("True waves/True waves Reality/fairland/1.jpeg")} alt="Residential Plot" className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105" />
+                  <div className="absolute inset-0 bg-primary/5 group-hover:bg-transparent transition-colors duration-500" />
+                </div>
+                <div className="flex flex-col gap-2">
+                  <p className="text-accent text-sm tracking-widest uppercase mb-1 font-medium">Madurai</p>
+                  <div className="flex justify-between items-baseline gap-4">
+                    <h3 className="text-2xl md:text-3xl font-medium tracking-tight group-hover:text-accent transition-colors duration-300">Fairland Township</h3>
+                    <p className="text-foreground/70 font-light text-sm whitespace-nowrap">Plotted Township</p>
+                  </div>
                 </div>
               </div>
-            </div>
+            </Link>
 
             {/* Project 2 */}
-            <div className="group cursor-pointer reveal-text">
-              <div className="relative overflow-hidden aspect-[4/3] mb-6">
-                <img src="/assets/images/other images/Alagar Homes.png" alt="Alagar Homes" className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105" />
-                <div className="absolute inset-0 bg-primary/5 group-hover:bg-transparent transition-colors duration-500" />
-              </div>
-              <div className="flex flex-col gap-2">
-                <p className="text-accent text-sm tracking-widest uppercase mb-1 font-medium">Madurai</p>
-                <div className="flex justify-between items-baseline gap-4">
-                  <h3 className="text-2xl md:text-3xl font-medium tracking-tight group-hover:text-accent transition-colors duration-300">Alagar Homes</h3>
-                  <p className="text-foreground/70 font-light text-sm whitespace-nowrap">Residential Apartments</p>
+            <Link href="/projects/alagar-homes" className="group cursor-pointer reveal-text block">
+              <div>
+                <div className="relative overflow-hidden aspect-[4/3] mb-6">
+                  <img src="/assets/images/other images/Alagar Homes.png" alt="Alagar Homes" className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105" />
+                  <div className="absolute inset-0 bg-primary/5 group-hover:bg-transparent transition-colors duration-500" />
+                </div>
+                <div className="flex flex-col gap-2">
+                  <p className="text-accent text-sm tracking-widest uppercase mb-1 font-medium">Madurai</p>
+                  <div className="flex justify-between items-baseline gap-4">
+                    <h3 className="text-2xl md:text-3xl font-medium tracking-tight group-hover:text-accent transition-colors duration-300">Alagar Homes</h3>
+                    <p className="text-foreground/70 font-light text-sm whitespace-nowrap">Residential Apartments</p>
+                  </div>
                 </div>
               </div>
-            </div>
+            </Link>
 
             {/* Project 3 */}
-            <div className="group cursor-pointer reveal-text">
-              <div className="relative overflow-hidden aspect-[4/3] mb-6">
-                <img src="/assets/images/other images/vishal virinchi main.png" alt="Commercial Plot" className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105" />
-                <div className="absolute inset-0 bg-primary/5 group-hover:bg-transparent transition-colors duration-500" />
-              </div>
-              <div className="flex flex-col gap-2">
-                <p className="text-accent text-sm tracking-widest uppercase mb-1 font-medium">Madurai</p>
-                <div className="flex justify-between items-baseline gap-4">
-                  <h3 className="text-2xl md:text-3xl font-medium tracking-tight group-hover:text-accent transition-colors duration-300">Vishal's Virinchi</h3>
-                  <p className="text-foreground/70 font-light text-sm whitespace-nowrap">Premium Plots</p>
+            <Link href="/projects/vishal-virinchi" className="group cursor-pointer reveal-text block">
+              <div>
+                <div className="relative overflow-hidden aspect-[4/3] mb-6">
+                  <img src="/assets/images/other images/vishal virinchi main.png" alt="Commercial Plot" className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105" />
+                  <div className="absolute inset-0 bg-primary/5 group-hover:bg-transparent transition-colors duration-500" />
+                </div>
+                <div className="flex flex-col gap-2">
+                  <p className="text-accent text-sm tracking-widest uppercase mb-1 font-medium">Madurai</p>
+                  <div className="flex justify-between items-baseline gap-4">
+                    <h3 className="text-2xl md:text-3xl font-medium tracking-tight group-hover:text-accent transition-colors duration-300">Vishal's Virinchi</h3>
+                    <p className="text-foreground/70 font-light text-sm whitespace-nowrap">Luxury Apartments</p>
+                  </div>
                 </div>
               </div>
-            </div>
+            </Link>
           </div>
         </div>
       </section>

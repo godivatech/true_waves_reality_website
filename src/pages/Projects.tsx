@@ -2,15 +2,14 @@ import { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { motion, AnimatePresence } from "framer-motion";
-import { X, ChevronLeft, ChevronRight, Maximize2 } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import WhatsAppBtn from "@/components/WhatsAppBtn";
 import MobileCta from "@/components/MobileCta";
 import ConsultationModal from "@/components/ConsultationModal";
 import heroImg from "@/assets/images/hero-aerial.png";
-
 import { useLocation } from "wouter";
+import { projects } from "@/data/projects";
 
 function useUrlLocation() {
   const [location, setLocation] = useState(() => ({
@@ -52,104 +51,10 @@ function useUrlLocation() {
   return location;
 }
 
-const IMAGEKIT_URL = import.meta.env.VITE_IMAGEKIT_URL || "https://ik.imagekit.io/15s95izzpx";
-
-const getImg = (path: string, transform?: string) => {
-  const baseUrl = `${IMAGEKIT_URL}${path.startsWith('/') ? '' : '/'}${path}`;
-  const encodedUrl = encodeURI(baseUrl);
-  return transform ? `${encodedUrl}?tr=${transform}` : encodedUrl;
-};
-
-
-const projects = [
-  {
-    id: 1,
-    title: "Fairland Township",
-    location: "NH-44, Ayyankottai",
-    type: "Plotted Township",
-    area: "40 Acres",
-    price: "DTCP Approved",
-    tag: "Featured",
-    category: "Residential",
-    img: getImg("True waves/True waves Reality/fairland/1.jpeg"),
-    featured: true,
-    wide: true,
-    desc: "A masterplanned gated community with full infrastructure, maze garden, and 40-ft grand entrance.",
-    gallery: [
-      getImg("True waves/True waves Reality/fairland/1.jpeg"),
-      getImg("True waves/True waves Reality/fairland/2.jpeg"),
-      getImg("True waves/True waves Reality/fairland/3.jpeg"),
-      getImg("True waves/True waves Reality/fairland/4.jpeg"),
-      getImg("True waves/True waves Reality/fairland/5.jpeg"),
-      getImg("True waves/True waves Reality/fairland/6.JPG"),
-      getImg("True waves/True waves Reality/fairland/7.JPG"),
-      getImg("True waves/True waves Reality/fairland/8.JPG"),
-      getImg("True waves/True waves Reality/fairland/9.JPG"),
-      getImg("True waves/True waves Reality/fairland/10.JPG"),
-    ]
-  },
-  {
-    id: 2,
-    title: "Alagar Homes",
-    location: "Nethaji Main Road",
-    type: "Residential Apartments",
-    area: "1, 2 & 2.5 BHK",
-    price: "Premium Living",
-    tag: "BB Kulam",
-    category: "Residential",
-    img: "/assets/images/other images/Alagar Homes.png",
-    featured: false,
-    wide: false,
-    desc: "RCC framed structure with full-body vitrified tile flooring and premium teak wood main door.",
-    gallery: [
-      getImg("True waves/True waves Reality/alagar homes/1.mp4"),
-    ]
-  },
-  {
-    id: 3,
-    title: "Vishal's Virinchi",
-    location: "Iyer Bungalow",
-    type: "Luxury Apartments",
-    area: "3 BHK",
-    price: "Serene Living",
-    tag: "Naganakulam",
-    category: "Premium Villas",
-    img: "/assets/images/other images/vishal virinchi main.png",
-    featured: true,
-    wide: false,
-    desc: "Signature curved contemporary facade design with rooftop access and premium finishes throughout.",
-    gallery: [
-      "/assets/images/other images/vishal virinchi main.png",
-      getImg("True waves/True waves Reality/vishal virinchi/2.png"),
-      getImg("True waves/True waves Reality/vishal virinchi/3.png"),
-      getImg("True waves/True waves Reality/vishal virinchi/4.png"),
-      getImg("True waves/True waves Reality/vishal virinchi/5.png"),
-      getImg("True waves/True waves Reality/vishal virinchi/6.png"),
-      getImg("True waves/True waves Reality/vishal virinchi/7.png"),
-    ]
-  },
-  {
-    id: 4,
-    title: "Parivakkam",
-    location: "Chennai Corridor",
-    type: "Approved Plot",
-    area: "1 Acre",
-    price: "Upcoming",
-    tag: "Pre-launch",
-    category: "Commercial",
-    img: getImg("True waves/True waves Reality/fairland/2.jpeg"),
-    featured: false,
-    wide: true,
-    desc: "Chennai's next high-growth corridor. DTCP-approved, limited early-access slots. Infrastructure is expanding fast — early investors win maximum ROI.",
-  },
-];
-
 export default function Projects() {
   const containerRef = useRef<HTMLDivElement>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [activeFilter, setActiveFilter] = useState("All");
-  const [selectedGallery, setSelectedGallery] = useState<{title: string, images: string[]} | null>(null);
-  const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [, navigate] = useLocation();
   const { search } = useUrlLocation();
 
@@ -158,7 +63,7 @@ export default function Projects() {
     const filterParam = params.get("filter");
     if (filterParam) {
       const decodedFilter = decodeURIComponent(filterParam);
-      const matched = ["All", "Residential", "Commercial", "Agricultural", "Premium Villas"].find(
+      const matched = ["All", "Plots", "Residential", "Premium"].find(
         (f) => f.toLowerCase() === decodedFilter.toLowerCase()
       );
       if (matched) {
@@ -185,7 +90,6 @@ export default function Projects() {
   const filteredProjects = activeFilter === "All" 
     ? projects 
     : projects.filter(p => p.category === activeFilter);
-
 
   useEffect(() => {
     ScrollTrigger.refresh();
@@ -222,7 +126,7 @@ export default function Projects() {
   }, []);
 
   return (
-    <div ref={containerRef} className="relative bg-background text-foreground min-h-screen overflow-x-hidden">
+    <div ref={containerRef} className="relative bg-background text-foreground min-h-screen">
       <Navbar />
 
       {/* Page Hero */}
@@ -261,7 +165,7 @@ export default function Projects() {
       <div id="projects-feed" className="sticky top-[64px] md:top-[88px] scroll-mt-[64px] md:scroll-mt-[88px] z-30 bg-background/90 backdrop-blur-md border-b border-border/50 py-4 px-6 overflow-hidden">
         <div className="container mx-auto relative">
           <div className="flex gap-4 md:gap-8 overflow-x-auto scrollbar-hide pb-2 snap-x snap-mandatory">
-            {["All", "Residential", "Commercial", "Agricultural", "Premium Villas"].map((f) => (
+            {["All", "Plots", "Residential", "Premium"].map((f) => (
               <button
                 key={f}
                 onClick={() => navigate(`/projects?filter=${encodeURIComponent(f)}`)}
@@ -307,11 +211,7 @@ export default function Projects() {
                     transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
                     key={p.id} 
                     className="group cursor-pointer"
-                    onClick={() => {
-                      const galleryImages = p.gallery && p.gallery.length > 0 ? p.gallery : [p.img];
-                      setSelectedGallery({ title: p.title, images: galleryImages });
-                      setCurrentImageIndex(0);
-                    }}
+                    onClick={() => navigate(`/projects/${p.slug}`)}
                   >
                     <div className="relative overflow-hidden aspect-[4/3] mb-6">
                       {p.img.endsWith('.mp4') ? (
@@ -332,12 +232,6 @@ export default function Projects() {
                       )}
                       <div className="absolute inset-0 bg-[#0A1128]/5 group-hover:bg-transparent transition-colors duration-700" />
                       
-                      {p.gallery && (
-                        <div className="absolute bottom-5 right-5 w-12 h-12 bg-white/10 backdrop-blur-xl border border-white/20 rounded-full flex items-center justify-center text-white opacity-0 group-hover:opacity-100 transition-all duration-500">
-                          <Maximize2 size={20} />
-                        </div>
-                      )}
-
                       <span className="absolute top-5 left-5 px-3 py-1 bg-white/10 backdrop-blur-md text-white text-xs tracking-widest uppercase border border-white/20">
                         {p.tag}
                       </span>
@@ -402,107 +296,6 @@ export default function Projects() {
       <MobileCta onContactClick={() => setIsModalOpen(true)} />
 
       <ConsultationModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
-
-      {/* Cinematic Gallery Modal */}
-      <AnimatePresence>
-        {selectedGallery && (
-          <motion.div 
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[100] bg-black/95 flex flex-col items-center justify-center p-4 md:p-10 backdrop-blur-2xl"
-          >
-            {/* Gallery Header */}
-            <div className="absolute top-0 left-0 w-full p-6 md:p-10 flex justify-between items-center z-10">
-              <div>
-                <h4 className="text-white text-xl md:text-2xl font-medium tracking-tight">{selectedGallery.title}</h4>
-                <p className="text-white/40 text-xs tracking-[0.2em] uppercase mt-2">
-                  Image {currentImageIndex + 1} of {selectedGallery.images.length}
-                </p>
-              </div>
-              <button 
-                onClick={() => setSelectedGallery(null)}
-                className="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center text-white hover:bg-white/10 transition-colors"
-              >
-                <X size={24} />
-              </button>
-            </div>
-
-            {/* Main Image Container */}
-            <div className="relative w-full max-w-6xl aspect-[16/9] flex items-center justify-center">
-              <AnimatePresence mode="wait">
-                {selectedGallery.images[currentImageIndex].endsWith('.mp4') ? (
-                  <motion.video
-                    key={currentImageIndex}
-                    initial={{ opacity: 0, scale: 0.95, y: 20 }}
-                    animate={{ opacity: 1, scale: 1, y: 0 }}
-                    exit={{ opacity: 0, scale: 1.05, y: -20 }}
-                    transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-                    src={selectedGallery.images[currentImageIndex]}
-                    autoPlay
-                    controls
-                    muted
-                    loop
-                    playsInline
-                    className="w-full h-full object-contain"
-                  />
-                ) : (
-                  <motion.img
-                    key={currentImageIndex}
-                    initial={{ opacity: 0, scale: 0.95, y: 20 }}
-                    animate={{ opacity: 1, scale: 1, y: 0 }}
-                    exit={{ opacity: 0, scale: 1.05, y: -20 }}
-                    transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-                    src={selectedGallery.images[currentImageIndex].startsWith('/') 
-                      ? selectedGallery.images[currentImageIndex] 
-                      : `${selectedGallery.images[currentImageIndex]}?tr=w-1600`}
-                    className="w-full h-full object-contain"
-                  />
-                )}
-              </AnimatePresence>
-
-              {/* Navigation Arrows */}
-              {selectedGallery.images.length > 1 && (
-                <>
-                  <button 
-                    onClick={() => setCurrentImageIndex((prev) => (prev === 0 ? selectedGallery.images.length - 1 : prev - 1))}
-                    className="absolute left-4 md:-left-20 top-1/2 -translate-y-1/2 w-14 h-14 rounded-full border border-white/10 flex items-center justify-center text-white hover:bg-white/10 transition-all hover:scale-110"
-                  >
-                    <ChevronLeft size={32} />
-                  </button>
-                  <button 
-                    onClick={() => setCurrentImageIndex((prev) => (prev === selectedGallery.images.length - 1 ? 0 : prev + 1))}
-                    className="absolute right-4 md:-right-20 top-1/2 -translate-y-1/2 w-14 h-14 rounded-full border border-white/10 flex items-center justify-center text-white hover:bg-white/10 transition-all hover:scale-110"
-                  >
-                    <ChevronRight size={32} />
-                  </button>
-                </>
-              )}
-            </div>
-
-            {/* Thumbnails Strip */}
-            {selectedGallery.images.length > 1 && (
-              <div className="absolute bottom-10 left-0 w-full flex justify-center gap-3 px-6 overflow-x-auto no-scrollbar">
-                {selectedGallery.images.map((img, idx) => (
-                  <button
-                    key={idx}
-                    onClick={() => setCurrentImageIndex(idx)}
-                    className={`relative w-20 aspect-video overflow-hidden border-2 transition-all duration-300 flex-shrink-0 ${
-                      idx === currentImageIndex ? 'border-white scale-110' : 'border-transparent bg-white/10 backdrop-blur-sm opacity-40 hover:opacity-100'
-                    }`}
-                  >
-                    {img.endsWith('.mp4') ? (
-                      <video src={img} muted className="w-full h-full object-cover" />
-                    ) : (
-                      <img src={img.startsWith('/') ? img : `${img}?tr=w-200,h-150,fo-auto`} className="w-full h-full object-cover" />
-                    )}
-                  </button>
-                ))}
-              </div>
-            )}
-          </motion.div>
-        )}
-      </AnimatePresence>
     </div>
   );
 }
