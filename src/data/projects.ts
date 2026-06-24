@@ -271,51 +271,88 @@ export const projects: Project[] = [
     id: 4,
     slug: "parivakkam",
     title: "Parivakkam",
-    location: "Chennai Corridor",
+    location: "Poonamallee, Chennai",
     type: "Approved Plot (Upcoming)",
-    area: "1 Acre",
+    area: "Gated Villa Plots",
     price: "Upcoming",
     tag: "Pre-launch",
     category: "Plots",
     img: getImg("True waves/True waves Reality/fairland/2.jpeg"),
     featured: false,
     wide: true,
-    desc: "Chennai's next high-growth corridor. DTCP-approved, limited early-access slots.",
-    detailedDesc: "Parivakkam is an upcoming premium plotted development situated in one of Chennai's most strategic high-growth corridors. Perfect for early-stage investors, this project offers pre-launch pricing with guaranteed long-term appreciation as Chennai's infrastructure expands outward.",
+    desc: "A premier CMDA & RERA approved gated villa plot community in Poonamallee, Chennai with 5-year free maintenance.",
+    detailedDesc: "Parivakkam is a premier gated villa plot community strategically located in Poonamallee, in the western part of Chennai, Tamil Nadu. Positioned near the high-growth corridors of Porur and Maduravoyal, this site falls within the Chennai Metropolitan Region and offers a mix of urban residential convenience and rapidly growing commercial developments.\n\nDesigned as a fully integrated gated community, Parivakkam benefits from outstanding transportation connectivity through major road networks, including the Chennai Bypass and arterial roads. It is situated adjacent to the ORR Poonamallee junction, just 5 minutes from the Poonamallee Bus Stand, a few meters from the upcoming Metro Station, and 10 minutes from the Avadi Railway Station.\n\nWith close proximity to major educational institutions, healthcare facilities, shopping, and industrial establishments, Parivakkam is the perfect location for building your dream villa or securing a high-appreciating asset in western Chennai.",
     whyChoose: [
       {
-        title: "Early Investor Advantage",
-        desc: "Pre-launch pricing guarantees the highest margin of appreciation for early movers."
+        title: "CMDA & RERA Approved Layout",
+        desc: "Enjoy absolute legal peace of mind with 100% approved layouts ready for immediate villa construction and secure registration."
       },
       {
-        title: "Chennai Growth Corridor",
-        desc: "Located in an area experiencing rapid highway expansions and industrial investments."
+        title: "Unmatched Connectivity Hub",
+        desc: "Located adjacent to ORR Poonamallee junction, just 5 minutes from Poonamallee Bus Stand and a few meters from the upcoming Metro Station."
       },
       {
-        title: "Clear Titles & DTCP Approvals",
-        desc: "All documentation is strictly pre-vetted to ensure 100% legal safety."
+        title: "Premium Integrated Infrastructure",
+        desc: "Features underground drainage, electricity, wide B.T. (blacktop) roads, street lighting, and rainwater harvesting."
+      },
+      {
+        title: "5 Years Free Maintenance",
+        desc: "Benefit from zero maintenance headaches with five years of professional estate upkeep provided completely free for all buyers."
+      },
+      {
+        title: "High Security Gated Living",
+        desc: "Equipped with 24/7 professional security, CCTV surveillance, an all-round compound wall, and solar fencing."
       }
     ],
     highlights: [
-      "Strategic Chennai Outer Corridor Location",
-      "DTCP Approved Plotted Layouts",
-      "High Appreciation Potential",
-      "Excellent long-term ROI"
+      "CMDA & RERA Approved Layout of Villa Plots",
+      "Integrated Gated Community",
+      "Underground Drainage & Electricity",
+      "Avenue Plantation with Paver Blocks",
+      "Kids Play Area & Landscape View Benches",
+      "All B.T. (Blacktop) Roads with Street Lighting",
+      "Excellent Landscaping & Walking Footpath",
+      "Rainwater Harvesting & 24-Hr Water Supply",
+      "24-Hr Professional Security with CCTV Cameras",
+      "100% Vastu Compliant Plots",
+      "Free Maintenance for Five Years",
+      "All-round Compound Wall with Solar Fencing"
     ],
     locationAdvantages: [
-      "Direct access to key Chennai transit corridors",
-      "Rapidly growing residential and commercial neighborhood",
-      "Nearby proposed metro and highway networks"
+      "Few Meters from the Upcoming Metro Station",
+      "Adjacent to the ORR Poonamallee Junction",
+      "5 Minutes from Poonamallee Bus Stand",
+      "10 Minutes from Avadi Railway Station",
+      "Near Porur and Maduravoyal High-Growth Hubs",
+      "Close Proximity to Schools, Colleges, and Social Infrastructure",
+      "Easy Access to Western Chennai Commercial & Industrial Hubs"
     ],
     faqs: [
       {
-        q: "When is the project launch date?",
-        a: "The project is in its pre-launch phase. Contact us to receive priority notifications and early-access pricing."
+        q: "Is Parivakkam approved?",
+        a: "Yes, Parivakkam is a 100% CMDA & RERA approved villa plot layout."
       },
       {
-        q: "What is the starting plot size?",
-        a: "Details on layout sizing and pricing will be released soon. Register your interest to get early access."
+        q: "Where is the project located?",
+        a: "It is located in Poonamallee in the western part of Chennai, Tamil Nadu, near Porur and Maduravoyal."
+      },
+      {
+        q: "What are the nearest transport hubs?",
+        a: "The project is adjacent to the ORR Poonamallee junction, 5 minutes from Poonamallee Bus Stand, a few meters from the Metro Station, and 10 minutes from Avadi Railway Station."
+      },
+      {
+        q: "What is the maintenance plan?",
+        a: "Every buyer receives 5 years of completely free maintenance and estate upkeep managed by our professional team."
+      },
+      {
+        q: "What community facilities are included?",
+        a: "The gated community includes underground drainage, electricity, B.T. roads, street lighting, a compound wall with solar fencing, 24/7 security with CCTV, a kids' play area, walking footpaths, and vastu-compliant layout plans."
       }
+    ],
+    gallery: [
+      getImg("True waves/True waves Reality/fairland/2.jpeg"),
+      getImg("True waves/True waves Reality/fairland/3.jpeg"),
+      getImg("True waves/True waves Reality/fairland/4.jpeg"),
     ]
   }
 ];
