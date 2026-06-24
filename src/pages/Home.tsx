@@ -412,7 +412,7 @@ export default function Home() {
       <section className="py-52 bg-slate-50 text-[#0A1128] text-center px-6 relative overflow-hidden border-t border-border/40">
         <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-5 pointer-events-none"></div>
         <div className="container mx-auto max-w-5xl flex flex-col items-center relative z-10">
-          <h2 className="text-3xl sm:text-5xl md:text-9xl font-semibold tracking-tighter mb-10 reveal-text whitespace-nowrap text-[#0A1128]">
+          <h2 className="text-4xl md:text-6xl font-semibold tracking-tighter mb-10 reveal-text text-[#0A1128]">
             Secure Your Legacy
           </h2>
           <p className="text-2xl text-[#0A1128]/70 font-light mb-20 max-w-3xl reveal-text leading-relaxed">

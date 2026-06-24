@@ -247,7 +247,7 @@ export default function WhyUs() {
       {/* CTA */}
       <section className="py-32 bg-slate-50 text-[#0A1128] text-center px-6 border-t border-border/40">
         <div className="container mx-auto max-w-4xl">
-          <h2 className="text-5xl md:text-8xl font-semibold tracking-tighter mb-10 reveal-text text-[#0A1128]">
+          <h2 className="text-4xl md:text-6xl font-semibold tracking-tighter mb-10 reveal-text text-[#0A1128]">
             Ready to Invest<br />With Confidence?
           </h2>
           <p className="text-[#0A1128]/70 font-light text-xl mb-16 max-w-xl mx-auto reveal-text">
