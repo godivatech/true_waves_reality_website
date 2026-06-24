@@ -327,7 +327,7 @@ export default function About() {
                 </div>
                 <h3 className="text-2xl font-medium tracking-tight mb-1 group-hover:text-accent transition-colors duration-500">{member.name}</h3>
                 <p className="text-accent text-xs tracking-widest uppercase mb-4 font-medium">{member.role}</p>
-                <p className="text-foreground/80 font-light leading-relaxed">{member.bio}</p>
+                <p className="text-foreground/85 font-light leading-relaxed text-lg">{member.bio}</p>
               </div>
             ))}
           </div>
@@ -340,7 +340,7 @@ export default function About() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-20 items-center">
             <div>
               <h2 className="text-5xl md:text-7xl font-semibold tracking-tighter mb-10 reveal-text leading-tight text-[#0A1128]">
-                Let's talk<br />about your<br />future.
+                Let's talk<br />about your<br />future
               </h2>
               <p className="text-[#0A1128]/70 font-light text-xl leading-relaxed max-w-sm reveal-text">
                 Reach us directly. No queues, no call centres — a real conversation with a real advisor.

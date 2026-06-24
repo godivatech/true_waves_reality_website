@@ -235,8 +235,8 @@ export default function WhyUs() {
                   "{t.quote}"
                 </p>
                 <div>
-                  <p className="font-medium tracking-tight">{t.name}</p>
-                  <p className="text-foreground/70 text-sm mt-1">{t.role}</p>
+                  <p className="font-medium tracking-tight text-lg md:text-xl">{t.name}</p>
+                  <p className="text-foreground/60 text-sm md:text-base mt-1">{t.role}</p>
                 </div>
               </div>
             ))}

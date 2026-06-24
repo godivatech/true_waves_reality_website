@@ -219,14 +219,14 @@ export default function Home() {
                 <div className="space-y-6 reveal-text group">
                   <div className="h-px w-full bg-border group-hover:bg-accent transition-colors duration-500" />
                   <h3 className="text-2xl font-medium tracking-tight">Curated Growth</h3>
-                  <p className="text-foreground/80 leading-relaxed font-light text-base">
+                  <p className="text-foreground/85 leading-relaxed font-light text-lg">
                     Every project is meticulously vetted for geometric appreciation. We analyze infrastructure pipelines, corporate expansions, and municipal zoning to ensure your plot is positioned perfectly in the path of progress.
                   </p>
                 </div>
                 <div className="space-y-6 reveal-text group">
                   <div className="h-px w-full bg-border group-hover:bg-accent transition-colors duration-500" />
                   <h3 className="text-2xl font-medium tracking-tight">Absolute Security</h3>
-                  <p className="text-foreground/80 leading-relaxed font-light text-base">
+                  <p className="text-foreground/85 leading-relaxed font-light text-lg">
                     Investment without anxiety. From rigorous title scrutiny to seamless registration, our legal framework provides an impenetrable shield for your capital.
                   </p>
                 </div>
