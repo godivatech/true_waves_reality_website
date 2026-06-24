@@ -188,7 +188,7 @@ export default function Projects() {
       <section className="pt-24 pb-24 px-6 bg-background">
         <div className="container mx-auto">
           <div className="flex justify-between items-end mb-12">
-            <h2 className="text-5xl md:text-7xl font-semibold tracking-tighter reveal-text">
+            <h2 className="text-4xl md:text-6xl font-semibold tracking-tighter reveal-text">
               Featured <span className="text-muted-foreground/30 font-light">Projects</span>
             </h2>
             <p className="text-muted-foreground font-light text-sm tracking-widest uppercase hidden md:block reveal-text pb-2">

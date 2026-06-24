@@ -210,7 +210,7 @@ export default function Home() {
             
             {/* Left Column: Content */}
             <div className="lg:col-span-7">
-              <h2 className="text-5xl md:text-7xl font-semibold tracking-tight mb-16 reveal-text leading-tight">
+              <h2 className="text-4xl md:text-6xl font-semibold tracking-tight mb-16 reveal-text leading-tight">
                 No confusion <br />
                 <span className="text-foreground/60">No surprises Only growth</span>
               </h2>
@@ -321,7 +321,7 @@ export default function Home() {
       <section className="pt-24 pb-24 bg-background relative overflow-hidden">
         <div className="container mx-auto px-6">
           <div className="flex justify-between items-end mb-16 reveal-text">
-            <h2 className="text-6xl md:text-8xl font-semibold tracking-tighter">
+            <h2 className="text-4xl md:text-6xl font-semibold tracking-tighter">
               Featured <span className="text-muted-foreground/30 font-light">Properties</span>
             </h2>
             <Link href="/projects" className="hidden md:flex items-center gap-3 text-sm tracking-widest uppercase hover:text-accent transition-colors pb-4 border-b border-border hover:border-accent">

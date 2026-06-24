@@ -222,7 +222,7 @@ export default function WhyUs() {
       {/* Testimonials — cinematic */}
       <section className="py-32 px-6 bg-background relative overflow-hidden">
         <div className="container mx-auto">
-          <h2 className="text-5xl md:text-7xl font-semibold tracking-tighter mb-24 reveal-text">
+          <h2 className="text-4xl md:text-6xl font-semibold tracking-tighter mb-24 reveal-text">
             Investor <span className="text-muted-foreground/30 font-light">Voices</span>
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-0">

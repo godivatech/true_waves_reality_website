@@ -170,7 +170,7 @@ export default function About() {
       {/* Values */}
       <section className="py-0 pb-32 px-6 bg-[#F5F5F0]">
         <div className="container mx-auto">
-          <h2 className="text-5xl md:text-7xl font-semibold tracking-tighter py-24 reveal-text">
+          <h2 className="text-4xl md:text-6xl font-semibold tracking-tighter py-24 reveal-text">
             What We <span className="text-muted-foreground/30 font-light">Stand For</span>
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-0 border border-border/40">
@@ -284,7 +284,7 @@ export default function About() {
       {/* Timeline */}
       <section className="py-32 px-6 bg-background">
         <div className="container mx-auto">
-          <h2 className="text-5xl md:text-7xl font-semibold tracking-tighter mb-24 reveal-text">
+          <h2 className="text-4xl md:text-6xl font-semibold tracking-tighter mb-24 reveal-text">
             12 Years of <span className="text-muted-foreground/30 font-light">Milestones</span>
           </h2>
         </div>
@@ -310,7 +310,7 @@ export default function About() {
       {/* Team */}
       <section className="py-32 px-6 bg-[#F5F5F0]">
         <div className="container mx-auto">
-          <h2 className="text-5xl md:text-7xl font-semibold tracking-tighter mb-24 reveal-text">
+          <h2 className="text-4xl md:text-6xl font-semibold tracking-tighter mb-24 reveal-text">
             The People <span className="text-muted-foreground/30 font-light">Behind It</span>
           </h2>
         </div>

@@ -180,7 +180,7 @@ export default function Invest() {
       <section className="py-32 px-6 bg-background">
         <div className="container mx-auto">
           <div className="flex justify-between items-end mb-24">
-            <h2 className="text-5xl md:text-7xl font-semibold tracking-tighter reveal-text leading-tight">
+            <h2 className="text-4xl md:text-6xl font-semibold tracking-tighter reveal-text leading-tight">
               How it <span className="text-muted-foreground/30 font-light">Works</span>
             </h2>
             <span className="text-muted-foreground text-sm tracking-widest uppercase hidden md:block">5 Steps</span>
@@ -214,7 +214,7 @@ export default function Invest() {
       {/* Investment Categories */}
       <section className="py-32 px-6 bg-[#F5F5F0]">
         <div className="container mx-auto">
-          <h2 className="text-5xl md:text-7xl font-semibold tracking-tighter mb-24 reveal-text">
+          <h2 className="text-4xl md:text-6xl font-semibold tracking-tighter mb-24 reveal-text">
             What We <span className="text-muted-foreground/30 font-light">Offer</span>
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-0">
@@ -284,7 +284,7 @@ export default function Invest() {
       {/* FAQ */}
       <section className="py-32 px-6 bg-background">
         <div className="container mx-auto max-w-4xl">
-          <h2 className="text-5xl md:text-7xl font-semibold tracking-tighter mb-24 reveal-text">
+          <h2 className="text-4xl md:text-6xl font-semibold tracking-tighter mb-24 reveal-text">
             Common <span className="text-muted-foreground/30 font-light">Questions</span>
           </h2>
           <div>
