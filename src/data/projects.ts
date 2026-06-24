@@ -277,7 +277,7 @@ export const projects: Project[] = [
     price: "Upcoming",
     tag: "Pre-launch",
     category: "Plots",
-    img: getImg("True waves/True waves Reality/fairland/2.jpeg"),
+    img: "/assets/images/other images/parivakkam/main image.png",
     featured: false,
     wide: true,
     desc: "A premier CMDA & RERA approved gated villa plot community in Poonamallee, Chennai with 5-year free maintenance.",
@@ -350,9 +350,7 @@ export const projects: Project[] = [
       }
     ],
     gallery: [
-      getImg("True waves/True waves Reality/fairland/2.jpeg"),
-      getImg("True waves/True waves Reality/fairland/3.jpeg"),
-      getImg("True waves/True waves Reality/fairland/4.jpeg"),
+      "/assets/images/other images/parivakkam/1.png"
     ]
   }
 ];
