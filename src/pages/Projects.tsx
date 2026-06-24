@@ -292,7 +292,10 @@ export default function Projects() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 max-w-6xl mx-auto">
+          <div className={filteredProjects.length === 1 
+            ? "grid grid-cols-1 max-w-2xl mx-auto" 
+            : "grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 max-w-6xl mx-auto"
+          }>
             <AnimatePresence mode="popLayout">
               {filteredProjects.map((p) => {
                 return (
@@ -305,10 +308,9 @@ export default function Projects() {
                     key={p.id} 
                     className="group cursor-pointer"
                     onClick={() => {
-                      if (p.gallery) {
-                        setSelectedGallery({ title: p.title, images: p.gallery });
-                        setCurrentImageIndex(0);
-                      }
+                      const galleryImages = p.gallery && p.gallery.length > 0 ? p.gallery : [p.img];
+                      setSelectedGallery({ title: p.title, images: galleryImages });
+                      setCurrentImageIndex(0);
                     }}
                   >
                     <div className="relative overflow-hidden aspect-[4/3] mb-6">
