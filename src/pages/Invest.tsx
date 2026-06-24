@@ -250,12 +250,12 @@ export default function Invest() {
       </section>
 
       {/* Split Image + CTA */}
-      <section className="bg-background grid grid-cols-1 lg:grid-cols-2 min-h-[70vh]">
-        <div className="relative overflow-hidden h-80 lg:h-auto">
+      <section className="bg-background grid grid-cols-1 lg:grid-cols-2 lg:h-[650px] overflow-hidden">
+        <div className="relative overflow-hidden h-80 lg:h-full">
           <img src={prop2} alt="Investment" className="w-full h-full object-cover" />
           <div className="absolute inset-0 bg-[#0A1128]/10" />
         </div>
-        <div className="flex flex-col justify-center px-12 md:px-20 py-24 gap-8">
+        <div className="flex flex-col justify-center px-12 md:px-20 py-16 gap-8">
           <h2 className="text-4xl md:text-6xl font-light tracking-tight leading-tight reveal-text text-foreground/80">
             Begin with a<br />private conversation
           </h2>

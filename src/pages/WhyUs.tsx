@@ -187,12 +187,12 @@ export default function WhyUs() {
 
       {/* Split Image + Stats */}
       <section className="py-0 bg-[#F5F5F0] relative overflow-hidden">
-        <div className="grid grid-cols-1 lg:grid-cols-2 min-h-[600px]">
-          <div className="relative overflow-hidden h-80 lg:h-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-2 lg:h-[650px]">
+          <div className="relative overflow-hidden h-80 lg:h-full">
             <img src={STATS_IMAGE} alt="Investment" className="w-full h-full object-cover" />
             <div className="absolute inset-0 bg-[#0A1128]/20" />
           </div>
-          <div className="flex flex-col justify-center px-12 md:px-20 py-24 gap-16">
+          <div className="flex flex-col justify-center px-12 md:px-20 py-16 gap-16">
             <h2 className="text-4xl md:text-6xl font-semibold tracking-tighter leading-tight reveal-text">
               Twelve years<br />One standard
             </h2>
