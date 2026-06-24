@@ -289,12 +289,15 @@ export default function Projects() {
           <button
             onClick={() => setIsModalOpen(true)}
             data-testid="button-projects-cta"
-            className="group inline-flex items-center gap-4 px-10 py-5 bg-[#0A1128] text-white font-medium rounded-sm hover:scale-105 transition-transform duration-500 text-lg tracking-wide hover:bg-accent transition-colors duration-300"
+            className="group relative overflow-hidden inline-flex items-center gap-4 px-10 py-5 bg-[#0A1128] text-white font-medium rounded-sm transition-all hover:scale-105 duration-500 text-lg tracking-wide hover:shadow-[0_10px_30px_rgba(10,17,40,0.15)]"
           >
-            Enquire Privately
-            <svg className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
-            </svg>
+            <span className="relative z-10 flex items-center gap-4">
+              Enquire Privately
+              <svg className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+              </svg>
+            </span>
+            <div className="absolute inset-0 h-full w-0 bg-accent transition-all duration-500 ease-out group-hover:w-full z-0" />
           </button>
         </div>
       </section>
