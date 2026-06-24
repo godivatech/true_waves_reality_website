@@ -2,23 +2,18 @@ import { Link } from "wouter";
 
 export default function Footer() {
   return (
-    <footer className="bg-[#0A1128] pt-16 pb-12 px-6 border-t border-white/5 text-white/50 text-sm font-light relative z-10">
+    <footer className="bg-[#0A1128] pt-12 pb-8 px-6 border-t border-white/5 text-white/50 text-sm font-light relative z-10">
       <div className="container mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-10 mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-10 mb-8">
           <div className="col-span-1 md:col-span-4">
-            <Link href="/">
-              <div className="flex flex-col items-start mb-8 cursor-pointer group">
-                <div className="mb-4 -mt-12">
-                  <img
-                    src="/assets/Logo.png"
-                    alt="True Waves Realty Logo"
-                    className="w-64 h-auto object-contain object-left-top origin-top-left scale-110"
-                  />
-                </div>
-              </div>
+            <Link href="/" className="inline-block -mt-8 mb-6 cursor-pointer group">
+              <img
+                src="/assets/Logo.png"
+                alt="True Waves Realty Logo"
+                className="w-56 h-auto object-contain"
+              />
             </Link>
             <p className="max-w-sm leading-relaxed text-base">
-              Invest • Grow • Prosper.<br /><br />
               Curating high-growth land properties across Tamil Nadu for the sophisticated investor. Excellence in spatial wealth.
             </p>
           </div>
@@ -47,7 +42,7 @@ export default function Footer() {
             </address>
           </div>
         </div>
-        <div className="flex flex-col md:flex-row justify-between items-center pt-10 border-t border-white/10">
+        <div className="flex flex-col md:flex-row justify-between items-center pt-8 border-t border-white/10">
           <div className="text-center md:text-left mb-6 md:mb-0">
             <p className="tracking-wide">© {new Date().getFullYear()} True Waves Realty. All rights reserved.</p>
             <p className="mt-2 tracking-wide text-xs">
