@@ -403,7 +403,7 @@ export default function Home() {
       </section>
 
       {/* Animated Stats */}
-      <section className="pt-24 pb-32 bg-background border-y border-border/40 relative z-20">
+      <section className="pt-24 pb-32 bg-[#F5F5F0] relative z-20">
         <div className="container mx-auto px-6">
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-x-12 gap-y-24 lg:gap-x-16">
             <div className="flex flex-col items-center text-center group">
@@ -427,7 +427,7 @@ export default function Home() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-52 bg-slate-50 text-[#0A1128] text-center px-6 relative overflow-hidden border-t border-border/40">
+      <section className="py-52 bg-slate-50 text-[#0A1128] text-center px-6 relative overflow-hidden">
         <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-5 pointer-events-none"></div>
         <div className="container mx-auto max-w-5xl flex flex-col items-center relative z-10">
           <h2 className="text-4xl md:text-6xl font-semibold tracking-tighter mb-10 reveal-text text-[#0A1128]">
