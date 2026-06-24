@@ -242,30 +242,45 @@ export default function Projects() {
                         </div>
                       </div>
                     </div>
-                    <div className="flex flex-col gap-2">
-                      <p className="text-accent text-xs tracking-widest uppercase font-medium">{p.location}</p>
-                      <div className="flex justify-between items-start">
-                        <h3 className="text-2xl md:text-3xl font-medium tracking-tight">{p.title}</h3>
-                        <p className="text-foreground/70 font-light text-sm text-right flex items-center justify-end gap-2">
-                          {p.type.includes("(Upcoming)") ? (
-                            <>
-                              <span>{p.type.replace("(Upcoming)", "").trim()}</span>
-                              <span className="px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider bg-accent text-white rounded-sm select-none shadow-sm">
-                                Upcoming
-                              </span>
-                            </>
-                          ) : p.type}
-                        </p>
+                    <div className="flex flex-col gap-3">
+                      {/* Meta Info Row */}
+                      <div className="flex flex-wrap items-center gap-2 text-[10px] tracking-widest uppercase font-semibold">
+                        <span className="text-accent">{p.location}</span>
+                        <span className="text-muted-foreground/35">•</span>
+                        <span className="text-muted-foreground/80">{p.type.replace("(Upcoming)", "").trim()}</span>
+                        {p.type.includes("(Upcoming)") && (
+                          <span className="px-2 py-0.5 text-[9px] font-bold bg-accent text-white rounded-sm select-none shadow-sm ml-1">
+                            Upcoming
+                          </span>
+                        )}
                       </div>
-                      <p className="text-foreground/70 font-light text-sm mt-1 leading-relaxed">{p.desc}</p>
-                      <div className="flex gap-6 mt-2 pt-4 border-t border-border/50">
+
+                      {/* Title */}
+                      <h3 className="text-2xl md:text-3xl font-medium tracking-tight text-foreground group-hover:text-accent transition-colors duration-300">
+                        {p.title}
+                      </h3>
+
+                      {/* Description */}
+                      <p className="text-foreground/70 font-light text-sm leading-relaxed">
+                        {p.desc}
+                      </p>
+
+                      {/* Specs Row */}
+                      <div className="flex items-center gap-8 mt-2 pt-4 border-t border-border/40">
                         <div>
-                          <p className="text-xs text-muted-foreground tracking-widest uppercase mb-1">Area</p>
-                          <p className="text-sm font-medium">{p.area}</p>
+                          <p className="text-[10px] text-muted-foreground tracking-widest uppercase mb-1 font-semibold">
+                            {p.category === "Plots" ? "Area" : "Config"}
+                          </p>
+                          <p className="text-sm font-medium text-foreground">{p.area}</p>
                         </div>
+                        <div className="w-[1px] h-8 bg-border/80" />
                         <div>
-                          <p className="text-xs text-muted-foreground tracking-widest uppercase mb-1">Price</p>
-                          <p className="text-sm font-medium">{p.price}</p>
+                          <p className="text-[10px] text-muted-foreground tracking-widest uppercase mb-1 font-semibold">
+                            {p.category === "Plots" ? "Status" : "Type"}
+                          </p>
+                          <p className={`text-sm font-medium ${p.price.toLowerCase() === 'upcoming' ? 'text-accent' : 'text-foreground'}`}>
+                            {p.price}
+                          </p>
                         </div>
                       </div>
                     </div>

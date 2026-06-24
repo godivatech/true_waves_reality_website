@@ -10,6 +10,7 @@ import MobileCta from "@/components/MobileCta";
 import ConsultationModal from "@/components/ConsultationModal";
 
 import heroImg from "@/assets/images/hero-aerial.png";
+import { projects } from "@/data/projects";
 
 const IMAGEKIT_URL = import.meta.env.VITE_IMAGEKIT_URL || "https://ik.imagekit.io/15s95izzpx";
 
@@ -330,56 +331,73 @@ export default function Home() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-12">
-            {/* Project 1 */}
-            <Link href="/projects/fairland" className="group cursor-pointer reveal-text block">
-              <div>
-                <div className="relative overflow-hidden aspect-[4/3] mb-6">
-                  <img src={getImg("True waves/True waves Reality/fairland/1.jpeg")} alt="Residential Plot" className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105" />
-                  <div className="absolute inset-0 bg-primary/5 group-hover:bg-transparent transition-colors duration-500" />
-                </div>
-                <div className="flex flex-col gap-2">
-                  <p className="text-accent text-sm tracking-widest uppercase mb-1 font-medium">Madurai</p>
-                  <div className="flex justify-between items-baseline gap-4">
-                    <h3 className="text-2xl md:text-3xl font-medium tracking-tight group-hover:text-accent transition-colors duration-300">Fairland Township</h3>
-                    <p className="text-foreground/70 font-light text-sm whitespace-nowrap">Plotted Township</p>
+            {projects.slice(0, 3).map((p) => (
+              <Link key={p.id} href={`/projects/${p.slug}`} className="group cursor-pointer reveal-text block">
+                <div>
+                  <div className="relative overflow-hidden aspect-[4/3] mb-6">
+                    {p.img.endsWith('.mp4') ? (
+                      <video
+                        src={p.img}
+                        autoPlay
+                        loop
+                        muted
+                        playsInline
+                        className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
+                      />
+                    ) : (
+                      <img
+                        src={p.img}
+                        alt={p.title}
+                        className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
+                      />
+                    )}
+                    <div className="absolute inset-0 bg-primary/5 group-hover:bg-transparent transition-colors duration-500" />
                   </div>
-                </div>
-              </div>
-            </Link>
+                  <div className="flex flex-col gap-3">
+                    {/* Meta Info Row */}
+                    <div className="flex flex-wrap items-center gap-2 text-[10px] tracking-widest uppercase font-semibold">
+                      <span className="text-accent">{p.location}</span>
+                      <span className="text-muted-foreground/35">•</span>
+                      <span className="text-muted-foreground/80">{p.type.replace("(Upcoming)", "").trim()}</span>
+                      {p.type.includes("(Upcoming)") && (
+                        <span className="px-2 py-0.5 text-[9px] font-bold bg-accent text-white rounded-sm select-none shadow-sm ml-1">
+                          Upcoming
+                        </span>
+                      )}
+                    </div>
 
-            {/* Project 2 */}
-            <Link href="/projects/alagar-homes" className="group cursor-pointer reveal-text block">
-              <div>
-                <div className="relative overflow-hidden aspect-[4/3] mb-6">
-                  <img src="/assets/images/other images/Alagar Homes.png" alt="Alagar Homes" className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105" />
-                  <div className="absolute inset-0 bg-primary/5 group-hover:bg-transparent transition-colors duration-500" />
-                </div>
-                <div className="flex flex-col gap-2">
-                  <p className="text-accent text-sm tracking-widest uppercase mb-1 font-medium">Madurai</p>
-                  <div className="flex justify-between items-baseline gap-4">
-                    <h3 className="text-2xl md:text-3xl font-medium tracking-tight group-hover:text-accent transition-colors duration-300">Alagar Homes</h3>
-                    <p className="text-foreground/70 font-light text-sm whitespace-nowrap">Residential Apartments</p>
-                  </div>
-                </div>
-              </div>
-            </Link>
+                    {/* Title */}
+                    <h3 className="text-2xl md:text-3xl font-medium tracking-tight text-foreground group-hover:text-accent transition-colors duration-300">
+                      {p.title}
+                    </h3>
 
-            {/* Project 3 */}
-            <Link href="/projects/vishal-virinchi" className="group cursor-pointer reveal-text block">
-              <div>
-                <div className="relative overflow-hidden aspect-[4/3] mb-6">
-                  <img src="/assets/images/other images/vishal virinchi main.png" alt="Commercial Plot" className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105" />
-                  <div className="absolute inset-0 bg-primary/5 group-hover:bg-transparent transition-colors duration-500" />
-                </div>
-                <div className="flex flex-col gap-2">
-                  <p className="text-accent text-sm tracking-widest uppercase mb-1 font-medium">Madurai</p>
-                  <div className="flex justify-between items-baseline gap-4">
-                    <h3 className="text-2xl md:text-3xl font-medium tracking-tight group-hover:text-accent transition-colors duration-300">Vishal's Virinchi</h3>
-                    <p className="text-foreground/70 font-light text-sm whitespace-nowrap">Luxury Apartments</p>
+                    {/* Description */}
+                    <p className="text-foreground/70 font-light text-sm leading-relaxed">
+                      {p.desc}
+                    </p>
+
+                    {/* Specs Row */}
+                    <div className="flex items-center gap-8 mt-2 pt-4 border-t border-border/40">
+                      <div>
+                        <p className="text-[10px] text-muted-foreground tracking-widest uppercase mb-1 font-semibold">
+                          {p.category === "Plots" ? "Area" : "Config"}
+                        </p>
+                        <p className="text-sm font-medium text-foreground">{p.area}</p>
+                      </div>
+                      <div className="w-[1px] h-8 bg-border/80" />
+                      <div>
+                        <p className="text-[10px] text-muted-foreground tracking-widest uppercase mb-1 font-semibold">
+                          {p.category === "Plots" ? "Status" : "Type"}
+                        </p>
+                        <p className={`text-sm font-medium ${p.price.toLowerCase() === 'upcoming' ? 'text-accent' : 'text-foreground'}`}>
+                          {p.price}
+                        </p>
+                      </div>
+                    </div>
                   </div>
                 </div>
-              </div>
-            </Link>
+              </Link>
+            ))}
           </div>
         </div>
       </section>
