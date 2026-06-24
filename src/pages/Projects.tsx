@@ -182,7 +182,7 @@ export default function Projects() {
                     key={f}
                     onClick={() => navigate(`/projects?filter=${encodeURIComponent(f)}`)}
                     data-testid={`button-filter-${f.toLowerCase().replace(" ", "-")}`}
-                    className={`text-xs md:text-sm tracking-[0.2em] uppercase whitespace-nowrap pb-2 border-b-2 transition-all duration-300 font-medium snap-start ${activeFilter === f
+                    className={`text-xs md:text-sm tracking-[0.2em] uppercase whitespace-nowrap pb-2 border-b-2 transition-all duration-300 font-medium cursor-pointer snap-start ${activeFilter === f
                       ? "border-accent text-foreground"
                       : "border-transparent text-muted-foreground hover:text-foreground hover:border-border"
                       }`}
@@ -289,7 +289,7 @@ export default function Projects() {
           <button
             onClick={() => setIsModalOpen(true)}
             data-testid="button-projects-cta"
-            className="group relative overflow-hidden inline-flex items-center gap-4 px-10 py-5 bg-[#0A1128] text-white font-medium rounded-sm transition-all hover:scale-105 duration-500 text-lg tracking-wide hover:shadow-[0_10px_30px_rgba(10,17,40,0.15)]"
+            className="group relative overflow-hidden inline-flex items-center gap-4 px-10 py-5 bg-[#0A1128] text-white font-medium rounded-sm transition-all hover:scale-105 duration-500 text-lg tracking-wide hover:shadow-[0_10px_30px_rgba(10,17,40,0.15)] cursor-pointer"
           >
             <span className="relative z-10 flex items-center gap-4">
               Enquire Privately
