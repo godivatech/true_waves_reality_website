@@ -127,7 +127,7 @@ export default function Home() {
           style={{ y: heroY, opacity: heroOpacity }}
         >
           <img src={heroImg} alt="Aerial view of luxury land" className="w-full h-full object-cover opacity-60" />
-          <div className="absolute inset-0 bg-gradient-to-b from-primary/40 via-primary/60 to-background" />
+          <div className="absolute inset-0 bg-gradient-to-b from-primary/40 via-primary/60 via-60% to-background" />
         </motion.div>
 
         <div className="relative z-10 container mx-auto px-6 flex flex-col items-center text-center pt-24">
