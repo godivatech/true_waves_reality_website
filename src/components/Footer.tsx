@@ -8,9 +8,9 @@ export default function Footer() {
           <div className="col-span-1 md:col-span-4">
             <Link href="/" className="inline-block -mt-8 mb-6 cursor-pointer group">
               <img
-                src="/assets/Logo.png"
+                src="/assets/Color Logo.png"
                 alt="True Waves Realty Logo"
-                className="w-56 h-auto object-contain"
+                className="w-64 h-auto object-contain brightness-0 invert opacity-80 group-hover:opacity-100 transition-opacity duration-300"
               />
             </Link>
             <p className="max-w-sm leading-relaxed text-base">

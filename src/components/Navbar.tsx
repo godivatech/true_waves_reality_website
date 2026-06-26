@@ -53,7 +53,6 @@ export default function Navbar() {
   const relativeLocation = locationPath.startsWith(base)
     ? locationPath.slice(base.length) || "/"
     : locationPath;
-  const isHome = relativeLocation === "/";
 
   const isItemActive = (itemHref: string) => {
     const [itemPath, itemQuery] = itemHref.split("?");
@@ -90,15 +89,12 @@ export default function Navbar() {
     { href: "/invest", label: "Invest" },
   ];
 
-  const transparent = isHome && !scrolled;
-
   return (
     <>
       <nav
-        className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 ${transparent
-          ? "bg-transparent py-10"
-          : "bg-[#0A1128]/95 backdrop-blur-lg py-7 border-b border-white/10"
-          }`}
+        className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 bg-white/95 backdrop-blur-md border-b border-slate-200/80 shadow-sm ${
+          scrolled ? "py-4 shadow-md" : "py-6"
+        }`}
       >
         <div className="container mx-auto px-6 flex items-center justify-between">
           <Link
@@ -108,9 +104,9 @@ export default function Navbar() {
           >
             <div className="z-10 relative">
               <img
-                src="/assets/Logo.png"
+                src="/assets/Color Logo.png"
                 alt="True Waves Realty"
-                className="w-24 md:w-32 h-auto object-contain scale-125 origin-left"
+                className="w-32 md:w-44 h-auto object-contain scale-125 origin-left"
               />
             </div>
           </Link>
@@ -130,7 +126,7 @@ export default function Navbar() {
                       onClick={() => setDropdownOpen(false)}
                       className={`text-sm font-medium tracking-wide transition-colors duration-300 flex items-center gap-1.5 ${relativeLocation.startsWith(link.href)
                         ? "text-accent"
-                        : "text-white/80 hover:text-white"
+                        : "text-[#0A1128]/70 hover:text-[#0A1128]"
                         }`}
                       data-testid={`link-nav-${link.label.toLowerCase().replace(" ", "-")}`}
                     >
@@ -153,7 +149,7 @@ export default function Navbar() {
                           : "opacity-0 translate-y-2 pointer-events-none"
                       }`}
                     >
-                      <div className="bg-[#0A1128]/95 backdrop-blur-lg border border-white/10 rounded-sm p-3 shadow-2xl flex flex-col gap-1">
+                      <div className="bg-white/95 backdrop-blur-md border border-slate-200/80 rounded-sm p-3 shadow-xl flex flex-col gap-1">
                         {link.dropdownItems.map((item) => (
                           <Link
                             key={item.href}
@@ -161,8 +157,8 @@ export default function Navbar() {
                             onClick={() => setDropdownOpen(false)}
                             className={`text-[11px] font-medium tracking-widest uppercase px-4 py-3 rounded-sm transition-all duration-300 flex items-center justify-between group/item ${
                               isItemActive(item.href)
-                                ? "text-accent bg-white/5"
-                                : "text-white/70 hover:text-accent hover:bg-white/5"
+                                ? "text-accent bg-slate-50"
+                                : "text-[#0A1128]/70 hover:text-accent hover:bg-slate-50"
                             }`}
                           >
                             <span>{item.label}</span>
@@ -192,7 +188,7 @@ export default function Navbar() {
                   href={link.href}
                   className={`text-sm font-medium tracking-wide transition-colors duration-300 ${relativeLocation === link.href
                     ? "text-accent"
-                    : "text-white/80 hover:text-white"
+                    : "text-[#0A1128]/70 hover:text-[#0A1128]"
                     }`}
                   data-testid={`link-nav-${link.label.toLowerCase().replace(" ", "-")}`}
                 >
@@ -204,14 +200,14 @@ export default function Navbar() {
 
           <button
             onClick={() => setIsModalOpen(true)}
-            className="hidden md:block px-6 py-2 bg-white/10 hover:bg-white text-white hover:text-[#0A1128] backdrop-blur-sm border border-white/20 transition-all duration-300 text-sm font-medium tracking-wide rounded-sm"
+            className="hidden md:block px-6 py-2.5 bg-[#0A1128] hover:bg-accent text-white transition-all duration-300 text-sm font-medium tracking-wide rounded-sm shadow-sm"
             data-testid="button-nav-cta"
           >
             Book Consultation
           </button>
 
           <button
-            className="md:hidden text-white p-2"
+            className="md:hidden text-[#0A1128] p-2"
             onClick={() => setMenuOpen(!menuOpen)}
             data-testid="button-mobile-menu"
             aria-label="Toggle menu"
@@ -229,7 +225,7 @@ export default function Navbar() {
 
       {/* Mobile Menu */}
       <div
-        className={`fixed inset-0 z-40 bg-[#0A1128] flex flex-col justify-center items-center gap-6 overflow-y-auto py-24 transition-all duration-500 ${menuOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
+        className={`fixed inset-0 z-40 bg-white flex flex-col justify-center items-center gap-6 overflow-y-auto py-24 transition-all duration-500 ${menuOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
           }`}
       >
         {navLinks.map((link) => {
@@ -239,7 +235,7 @@ export default function Navbar() {
                 <Link
                   href={link.href}
                   onClick={() => setMenuOpen(false)}
-                  className="text-white text-4xl font-light tracking-tight hover:text-accent transition-colors"
+                  className="text-[#0A1128] text-4xl font-light tracking-tight hover:text-accent transition-colors"
                   data-testid={`link-mobile-nav-${link.label.toLowerCase().replace(" ", "-")}`}
                 >
                   {link.label}
@@ -251,7 +247,7 @@ export default function Navbar() {
                       href={item.href}
                       onClick={() => setMenuOpen(false)}
                       className={`text-sm tracking-widest uppercase transition-colors ${
-                        isItemActive(item.href) ? "text-accent" : "text-white/50 hover:text-accent"
+                        isItemActive(item.href) ? "text-accent" : "text-[#0A1128]/50 hover:text-accent"
                       }`}
                     >
                       {item.label}
@@ -267,7 +263,7 @@ export default function Navbar() {
               key={link.href}
               href={link.href}
               onClick={() => setMenuOpen(false)}
-              className="text-white text-4xl font-light tracking-tight hover:text-accent transition-colors"
+              className="text-[#0A1128] text-4xl font-light tracking-tight hover:text-accent transition-colors"
               data-testid={`link-mobile-nav-${link.label.toLowerCase().replace(" ", "-")}`}
             >
               {link.label}
@@ -279,7 +275,7 @@ export default function Navbar() {
             setMenuOpen(false);
             setIsModalOpen(true);
           }}
-          className="mt-8 px-10 py-4 border border-white/30 text-white text-lg tracking-wide hover:bg-white hover:text-[#0A1128] transition-all duration-300 rounded-sm"
+          className="mt-8 px-10 py-4 border border-[#0A1128]/20 text-[#0A1128] text-lg tracking-wide hover:bg-[#0A1128] hover:text-white transition-all duration-300 rounded-sm"
         >
           Book Consultation
         </button>
